@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'SEO',
+    icon: 'cube' as const,
+    features: ['Local SEO', 'Content Creation', 'Customized Strategy', 'Increased Online Visibility'],
+  },
+  {
+    title: 'On-Page Optimization',
+    icon: 'pencil' as const,
+    features: ['Keyword Research', 'Meta Tags & Headers', 'Internal Linking', 'Content Refinement'],
+  },
+  {
+    title: 'Off-Page SEO',
+    icon: 'link' as const,
+    features: ['Backlink Acquisition', 'Domain Authority', 'Competitive Analysis', 'Brand Outreach'],
+  },
+  {
+    title: 'Performance Reporting',
+    icon: 'graph' as const,
+    features: ['Monthly Reports', 'Rank Tracking', 'Traffic Analysis', 'Transparent Wins'],
+  },
+];
+
+const locations = [
+  { slug: 'apple-valley', label: 'Apple Valley' },
+  { slug: 'victorville', label: 'Victorville' },
+  { slug: 'hesperia', label: 'Hesperia' },
+  { slug: 'barstow', label: 'Barstow' },
+  { slug: 'lucerne-valley', label: 'Lucerne Valley' },
+  { slug: 'adelanto', label: 'Adelanto' },
+];
+---
+
+<Layout
+  title="Lead Surges - SEO | Digital Marketing"
+  description="Quality SEO services to boost your business's online visibility and drive organic traffic. Discover tailored strategies and watch your leads surge!"
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-20 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-600/30 via-fuchsia-500/20 to-transparent blur-3xl"></div>
+      <div class="absolute top-60 -left-20 w-[400px] h-[400px] rounded-full bg-purple-700/20 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-28 lg:pt-32 lg:pb-40">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/70 mb-8">
+            <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+            Accepting new clients for Q2 2026
+          </div>
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight text-white">
+            Maximize Your Business.
+            <span class="block mt-2 text-gradient">Partner with Us for Results.</span>
+          </h1>
+          <p class="mt-7 text-lg text-white/70 max-w-xl leading-relaxed">
+            Quality SEO and digital marketing built to grow real businesses. Tailored strategies, transparent reporting, and proven techniques that move the needle.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <Button href="/pricing" size="lg">View Pricing</Button>
+            <Button href="/contact" variant="secondary" size="lg">Contact Us</Button>
+          </div>
+
+          <div class="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-white/50">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
+              Transparent reporting
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
+              Data-driven strategies
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
+              High Desert local
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative aspect-square max-w-md mx-auto">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-purple-600 via-fuchsia-500 to-pink-500 blur-2xl opacity-50"></div>
+            <div class="relative w-full h-full rounded-full bg-gradient-to-br from-purple-600 to-fuchsia-600 p-1">
+              <div class="w-full h-full rounded-full bg-[#0a0510] flex items-center justify-center overflow-hidden">
+                <div class="text-center px-8">
+                  <div class="text-6xl lg:text-7xl font-display font-extrabold text-gradient mb-2">+312%</div>
+                  <p class="text-white/60 text-sm">average organic traffic lift for clients in their first 6 months</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 -right-4 px-4 py-3 rounded-2xl bg-[#0f0a18] border border-white/10 shadow-xl">
+              <div class="flex items-center gap-2">
+                <div class="flex -space-x-2">
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 border-2 border-[#0f0a18]"></div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-500 border-2 border-[#0f0a18]"></div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 border-2 border-[#0f0a18]"></div>
+                </div>
+                <span class="text-xs text-white/70 font-medium">Trusted by local businesses</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28 border-t border-white/5">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">About Us</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+            We help business owners <span class="text-gradient">surge ahead</span> of their competition.
+          </h2>
+          <p class="mt-6 text-white/70 leading-relaxed text-lg">
+            We're a dedicated SEO company passionate about helping business owners like you enhance their online presence. Our team specializes in optimizing your website to improve search rankings, drive targeted traffic, and ultimately grow your business.
+          </p>
+          <p class="mt-4 text-white/70 leading-relaxed">
+            With a focus on tailored strategies and proven techniques, we ensure your brand stands out in the competitive digital landscape.
+          </p>
+          <div class="mt-8">
+            <Button href="/about" variant="secondary">More about us</Button>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="text-2xl lg:text-3xl font-display font-bold text-white leading-snug">
+            You need innovative online marketing, and that's what we do. We are a team of
+            <span class="text-gradient">digital marketers</span> who create meaningful, transformative experiences. We specialize in
+            <span class="text-gradient">SEO, PPC</span> and
+            <span class="text-gradient">Web Design</span>, designing and building digital experiences for the real world. Using
+            <span class="text-gradient">data-driven</span> strategies to ensure your
+            <span class="text-gradient">profits</span> along with monthly reports to show complete
+            <span class="text-gradient">transparency</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
+      <div class="max-w-2xl mb-14">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">What We Do</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          Services that turn search traffic into customers.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((s) => <ServiceCard {...s} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28 border-t border-white/5">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Our Process</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          A clear path from kickoff to results.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { n: '01', title: 'Consultation', body: 'We dig into your business goals, audience, and competitive landscape.' },
+          { n: '02', title: 'Audit & Research', body: 'Technical audit, keyword research, and a baseline of where you stand today.' },
+          { n: '03', title: 'Strategy & Build', body: 'On-page, off-page, and technical optimizations executed by SEO specialists.' },
+          { n: '04', title: 'Monitor & Report', body: 'Monthly reports with the numbers that matter — and the next-step plan.' },
+        ].map((step) => (
+          <div class="relative p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+            <div class="text-4xl font-display font-extrabold text-gradient mb-4">{step.n}</div>
+            <h3 class="text-lg font-display font-bold text-white mb-2">{step.title}</h3>
+            <p class="text-white/65 text-sm leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28 border-t border-white/5">
+      <div class="max-w-2xl mb-12">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Where We Work</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          SEO that knows your neighborhood.
+        </h2>
+        <p class="mt-5 text-white/70 leading-relaxed">
+          Local SEO is our specialty. We serve businesses across the High Desert and Inland Empire.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {locations.map((loc) => (
+          <a
+            href={`/services/${loc.slug}`}
+            class="group flex items-center justify-between p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 hover:bg-[#150d22]/80 transition-all"
+          >
+            <span class="font-display font-semibold text-white">SEO in {loc.label}</span>
+            <svg class="w-5 h-5 text-purple-300 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path d="M7.05 4.55a1 1 0 0 1 1.4 0l4.5 4.5a1 1 0 0 1 0 1.4l-4.5 4.5a1 1 0 0 1-1.4-1.4L10.59 10 7.05 6.46a1 1 0 0 1 0-1.4z"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 via-purple-600 to-fuchsia-600 p-10 lg:p-16">
+        <div class="absolute inset-0 opacity-30">
+          <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full bg-white/20 blur-3xl"></div>
+          <div class="absolute -bottom-10 -left-10 w-80 h-80 rounded-full bg-pink-500/30 blur-3xl"></div>
+        </div>
+        <div class="relative max-w-2xl">
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+            Ready to watch your leads surge?
+          </h2>
+          <p class="mt-5 text-white/90 leading-relaxed text-lg">
+            Book a free consultation and we'll walk through what a tailored SEO strategy looks like for your business.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-purple-700 font-semibold text-base hover:bg-white/90 transition-colors">
+              Book a consultation
+            </a>
+            <a href="/pricing" class="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-base hover:bg-white/10 transition-colors">
+              See pricing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

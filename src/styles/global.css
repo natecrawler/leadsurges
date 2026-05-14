@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+
+  --color-ink: #ffffff;
+  --color-ink-muted: rgba(255, 255, 255, 0.7);
+  --color-ink-subtle: rgba(255, 255, 255, 0.55);
+
+  --color-bg: #000000;
+  --color-bg-soft: #0a0510;
+  --color-bg-card: #0f0a18;
+
+  --color-brand-50: #faf5ff;
+  --color-brand-300: #c084fc;
+  --color-brand-400: #a855f7;
+  --color-brand-500: #9333ea;
+  --color-brand-600: #7e22ce;
+  --color-brand-700: #6b21a8;
+  --color-magenta: #d946ef;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  body {
+    background:
+      radial-gradient(1200px 600px at 90% -100px, rgba(217, 70, 239, 0.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(126, 34, 206, 0.22), transparent 60%),
+      var(--color-bg);
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--color-brand-500);
+    color: white;
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, #c084fc 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-brand {
+  background: linear-gradient(135deg, #7e22ce 0%, #d946ef 100%);
+}
+
+@utility ring-brand {
+  box-shadow: 0 0 0 1px rgba(192, 132, 252, 0.25);
+}

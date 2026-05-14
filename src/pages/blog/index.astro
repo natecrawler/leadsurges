@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title="Blog" description="SEO insights, link building strategies, and digital marketing playbooks from the Lead Surges team.">
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-12 lg:pt-32 lg:pb-16">
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Blog</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-3xl">
+        SEO insights, <span class="text-gradient">no fluff.</span>
+      </h1>
+      <p class="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">
+        Practical writing on SEO, link building, and digital marketing strategy.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group relative p-8 rounded-2xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 hover:bg-[#150d22]/80 transition-all flex flex-col"
+          >
+            {post.data.category && (
+              <span class="self-start mb-4 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-300 text-xs font-semibold">
+                {post.data.category}
+              </span>
+            )}
+            <h2 class="text-xl font-display font-bold text-white mb-3 leading-snug group-hover:text-gradient transition-colors">
+              {post.data.title}
+            </h2>
+            <p class="text-white/65 text-sm leading-relaxed mb-6 flex-1">{post.data.description}</p>
+            <div class="flex items-center justify-between text-xs text-white/50 pt-4 border-t border-white/5">
+              <span>{post.data.author}</span>
+              <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

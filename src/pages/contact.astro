@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us" description="Get in touch with Lead Surges. Free SEO consultations, no commitment. Based in Apple Valley, CA — serving clients nationwide.">
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-12 lg:pt-32 lg:pb-16">
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Contact</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-3xl">
+        Let's talk about <span class="text-gradient">your growth.</span>
+      </h1>
+      <p class="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">
+        Free consultation, no commitment. Tell us about your business and we'll come back with a tailored plan.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
+      <div class="grid lg:grid-cols-5 gap-12">
+        <div class="lg:col-span-3 p-8 lg:p-10 rounded-3xl bg-[#0f0a18]/60 border border-white/10">
+          <h2 class="font-display font-bold text-2xl text-white mb-2">Book a consultation</h2>
+          <p class="text-white/60 mb-8">We'll respond within one business day.</p>
+
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-white/80 mb-2">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors"
+                  placeholder="you@company.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-medium text-white/80 mb-2">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors"
+                placeholder="What can we help with?"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-white/80 mb-2">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full px-4 py-3 bg-black/30 border border-white/10 focus:border-purple-400 focus:ring-0 rounded-xl text-white placeholder-white/30 outline-none transition-colors resize-none"
+                placeholder="Tell us a bit about your business and what you're trying to accomplish."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-brand text-white font-semibold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5"
+            >
+              Send message
+              <svg class="w-4 h-4 ml-2" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <aside class="lg:col-span-2 space-y-6">
+          <div class="p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10">
+            <div class="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-purple-500/10 border border-purple-400/30 text-purple-300">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-white mb-1">Call us</h3>
+            <a href="tel:+17604759158" class="text-white/70 hover:text-purple-300">(760) 475-9158</a>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10">
+            <div class="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-purple-500/10 border border-purple-400/30 text-purple-300">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-white mb-1">Email us</h3>
+            <a href="mailto:contact@leadsurges.com" class="text-white/70 hover:text-purple-300">contact@leadsurges.com</a>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10">
+            <div class="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-purple-500/10 border border-purple-400/30 text-purple-300">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-white mb-1">Visit us</h3>
+            <p class="text-white/70 leading-relaxed">
+              11921 Morning Star Rd<br />
+              Apple Valley, CA 92308
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>

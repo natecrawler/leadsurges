@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+export function getStaticPaths() {
+  const locations = [
+    {
+      slug: 'apple-valley',
+      label: 'Apple Valley',
+      intro:
+        'Apple Valley is our home base. We help local businesses — from contractors to medical practices — show up when residents search for what they offer.',
+      industries: ['Contractors & Trades', 'Healthcare & Dental', 'Auto Services', 'Real Estate', 'Restaurants'],
+    },
+    {
+      slug: 'victorville',
+      label: 'Victorville',
+      intro:
+        "Victorville's growing fast, and so is the competition. We help businesses across the I-15 corridor outrank chains and capture more of the local market.",
+      industries: ['Auto Dealers', 'Healthcare', 'Legal Services', 'Home Services', 'Retail'],
+    },
+    {
+      slug: 'hesperia',
+      label: 'Hesperia',
+      intro:
+        'Hesperia businesses face stiff regional competition. Our local SEO playbook gets you visible in Google Maps and the local pack where it matters.',
+      industries: ['Home Services', 'Trades & Construction', 'Restaurants', 'Wellness', 'Auto Repair'],
+    },
+    {
+      slug: 'barstow',
+      label: 'Barstow',
+      intro:
+        "Barstow's mix of locals, travelers, and Route 66 tourism creates unique SEO opportunities. We help businesses capture both nearby and drive-through customers.",
+      industries: ['Hospitality & Lodging', 'Restaurants', 'Auto Services', 'Tourism', 'Retail'],
+    },
+    {
+      slug: 'lucerne-valley',
+      label: 'Lucerne Valley',
+      intro:
+        'Smaller market, bigger opportunity. In Lucerne Valley, a well-optimized site can dominate local search. We make sure yours does.',
+      industries: ['Trades & Construction', 'Agriculture', 'Auto & Equipment', 'Wellness', 'Retail'],
+    },
+    {
+      slug: 'adelanto',
+      label: 'Adelanto',
+      intro:
+        "Adelanto is one of the High Desert's fastest-growing markets. We help local businesses stake their claim in search before competitors catch up.",
+      industries: ['Logistics & Warehousing', 'Auto Services', 'Home Services', 'Healthcare', 'Restaurants'],
+    },
+  ];
+  return locations.map((loc) => ({ params: { location: loc.slug }, props: loc }));
+}
+
+const { label, intro, industries } = Astro.props;
+---
+
+<Layout
+  title={`SEO Services in ${label}, CA`}
+  description={`Local SEO services for businesses in ${label}, California. Get found in Google search and Maps where your customers are looking.`}
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 lg:pt-32 lg:pb-24">
+      <a href="/services" class="inline-flex items-center gap-1 text-purple-300 text-sm font-medium mb-6 hover:text-purple-200">
+        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4L6 8l4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All services
+      </a>
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Local SEO</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-4xl">
+        SEO Services in <span class="text-gradient">{label}, CA</span>
+      </h1>
+      <p class="mt-7 text-lg text-white/70 max-w-3xl leading-relaxed">{intro}</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <Button href="/contact" size="lg">Get a free audit</Button>
+        <Button href="/pricing" variant="secondary" size="lg">See pricing</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <h2 class="font-display font-bold text-3xl lg:text-4xl text-white mb-6 leading-tight">
+            How we help {label} businesses win in search.
+          </h2>
+          <p class="text-white/70 leading-relaxed mb-4">
+            Local SEO isn't just about keywords. It's about showing up when someone in {label} pulls out their phone and asks Google for exactly what you offer.
+          </p>
+          <p class="text-white/70 leading-relaxed">
+            We optimize your Google Business Profile, build citations on the directories that matter, create location-specific content, and earn the backlinks that signal authority to search engines. The result: more calls, more form fills, more revenue.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {[
+            { t: 'Google Business Profile optimization', b: 'Show up in the local pack and Google Maps with a fully optimized profile.' },
+            { t: 'Local citation building', b: 'Consistent business listings across directories search engines trust.' },
+            { t: 'Location-specific content', b: 'Pages that signal you serve real customers in real places.' },
+            { t: 'Review strategy', b: 'A system to earn and respond to the reviews that build trust and rankings.' },
+          ].map(({ t, b }) => (
+            <div class="p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10">
+              <h3 class="font-display font-bold text-white mb-2">{t}</h3>
+              <p class="text-white/65 text-sm leading-relaxed">{b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-white mb-8 leading-tight">Industries we serve in {label}</h2>
+      <div class="flex flex-wrap gap-3">
+        {industries.map((ind) => (
+          <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium">{ind}</span>
+        ))}
+      </div>
+      <p class="mt-8 text-white/60 text-sm">Industry not listed? <a href="/contact" class="text-purple-300 hover:text-purple-200 font-medium">Get in touch</a> — we work with most service-based businesses.</p>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 via-purple-600 to-fuchsia-600 p-10 lg:p-16">
+        <div class="absolute inset-0 opacity-30">
+          <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full bg-white/20 blur-3xl"></div>
+          <div class="absolute -bottom-10 -left-10 w-80 h-80 rounded-full bg-pink-500/30 blur-3xl"></div>
+        </div>
+        <div class="relative max-w-2xl">
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+            Ready to be found in {label}?
+          </h2>
+          <p class="mt-5 text-white/90 leading-relaxed text-lg">
+            Free SEO audit, no commitment. We'll show you exactly what's working and what isn't.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-purple-700 font-semibold text-base hover:bg-white/90 transition-colors">
+              Get my free audit
+            </a>
+            <a href="tel:+17604759158" class="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-base hover:bg-white/10 transition-colors">
+              (760) 475-9158
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,82 @@
+---
+const year = new Date().getFullYear();
+
+const locations = [
+  { slug: 'apple-valley', label: 'Apple Valley' },
+  { slug: 'victorville', label: 'Victorville' },
+  { slug: 'hesperia', label: 'Hesperia' },
+  { slug: 'barstow', label: 'Barstow' },
+  { slug: 'lucerne-valley', label: 'Lucerne Valley' },
+  { slug: 'adelanto', label: 'Adelanto' },
+];
+---
+
+<footer class="mt-24 border-t border-white/5 bg-black/40">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <a href="/" class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-lg bg-gradient-brand flex items-center justify-center font-display font-extrabold text-white">
+            LS
+          </div>
+          <span class="font-display font-bold text-white text-lg">Lead Surges</span>
+        </a>
+        <p class="text-white/60 text-sm leading-relaxed max-w-xs">
+          SEO and digital marketing built to grow real businesses. Based in the High Desert, serving clients nationwide.
+        </p>
+        <div class="flex items-center gap-3 mt-6">
+          <a href="https://www.facebook.com/" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5H15c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.5.2 1 .5 1.4 1 .4.4.7.8 1 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.5-.5 1-1 1.4-.4.4-.8.7-1.4 1-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.5-.2-1-.5-1.4-1-.4-.4-.7-.8-1-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.5.5-1 1-1.4.4-.4.8-.7 1.4-1 .4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.9 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.3-8.3a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H10V9z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-5">Company</h3>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/about" class="text-white/65 hover:text-white">About Us</a></li>
+          <li><a href="/services" class="text-white/65 hover:text-white">Services</a></li>
+          <li><a href="/pricing" class="text-white/65 hover:text-white">Pricing</a></li>
+          <li><a href="/blog" class="text-white/65 hover:text-white">Blog</a></li>
+          <li><a href="/contact" class="text-white/65 hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-5">Service Areas</h3>
+        <ul class="space-y-3 text-sm">
+          {locations.map((loc) => (
+            <li><a href={`/services/${loc.slug}`} class="text-white/65 hover:text-white">SEO in {loc.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-5">Contact</h3>
+        <ul class="space-y-3 text-sm text-white/65">
+          <li>
+            <a href="tel:+17604759158" class="hover:text-white">(760) 475-9158</a>
+          </li>
+          <li>
+            <a href="mailto:contact@leadsurges.com" class="hover:text-white">contact@leadsurges.com</a>
+          </li>
+          <li class="pt-2 leading-relaxed">
+            11921 Morning Star Rd<br />
+            Apple Valley, CA 92308
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/40">© {year} Lead Surges. All rights reserved.</p>
+      <p class="text-xs text-white/40">Built with Astro · Hosted on Netlify</p>
+    </div>
+  </div>
+</footer>

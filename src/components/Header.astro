@@ -1,0 +1,114 @@
+---
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+};
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services', hasSubmenu: true },
+  { href: '/about', label: 'About Us' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/blog', label: 'Blog' },
+];
+
+const locations = [
+  { slug: 'apple-valley', label: 'Apple Valley' },
+  { slug: 'victorville', label: 'Victorville' },
+  { slug: 'hesperia', label: 'Hesperia' },
+  { slug: 'barstow', label: 'Barstow' },
+  { slug: 'lucerne-valley', label: 'Lucerne Valley' },
+  { slug: 'adelanto', label: 'Adelanto' },
+];
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-white/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between gap-8">
+    <a href="/" class="flex items-center gap-3 shrink-0" aria-label="Lead Surges home">
+      <div class="w-12 h-12 rounded-lg bg-gradient-brand flex items-center justify-center font-display font-extrabold text-white text-lg">
+        LS
+      </div>
+      <span class="font-display font-bold text-white text-lg tracking-tight hidden sm:inline">
+        Lead Surges
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+      {links.map(({ href, label, hasSubmenu }) => (
+        <div class="relative group">
+          <a
+            href={href}
+            class:list={[
+              'px-4 py-2 rounded-full text-sm font-medium transition-colors',
+              isActive(href)
+                ? 'text-white'
+                : 'text-white/70 hover:text-white',
+            ]}
+          >
+            {label}
+            {hasSubmenu && (
+              <svg class="inline-block w-3 h-3 ml-1 -mt-0.5" viewBox="0 0 12 12" fill="none">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            )}
+          </a>
+          {hasSubmenu && (
+            <div class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+              <div class="bg-[#0f0a18] border border-white/10 rounded-xl py-2 min-w-[200px] shadow-xl shadow-black/50">
+                <a href="/services" class="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">All Services</a>
+                <div class="my-1 border-t border-white/5"></div>
+                {locations.map((loc) => (
+                  <a href={`/services/${loc.slug}`} class="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5">
+                    SEO in {loc.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="/contact"
+        class="hidden md:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-gradient-brand text-white text-sm font-semibold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-shadow"
+      >
+        Get Started
+      </a>
+      <button
+        type="button"
+        class="lg:hidden p-2 text-white"
+        aria-label="Toggle menu"
+        data-menu-toggle
+      >
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="lg:hidden hidden border-t border-white/5 bg-black/90" data-mobile-menu>
+    <nav class="px-6 py-4 flex flex-col gap-1" aria-label="Mobile">
+      {links.map(({ href, label }) => (
+        <a href={href} class="px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/5 font-medium">
+          {label}
+        </a>
+      ))}
+      <a href="/contact" class="mt-2 px-5 py-3 rounded-full bg-gradient-brand text-center text-white font-semibold">
+        Get Started
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const menu = document.querySelector('[data-mobile-menu]');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const values = [
+  { title: 'Quality-Focused', body: 'We prioritize excellence and aim to deliver outcomes that exceed client expectations.' },
+  { title: 'Transparent Partnerships', body: 'Clear communication and honesty form the backbone of every client relationship.' },
+  { title: 'Passionate Approach', body: 'Our team channels real enthusiasm into work that consistently pushes past industry standards.' },
+  { title: 'Forward-Thinking', body: 'Innovation drives our strategy. We continuously adopt the trends and tools that keep clients competitive.' },
+  { title: 'Principled Conduct', body: 'Respect and fairness guide every interaction — clients, partners, and team members alike.' },
+  { title: 'Committed Service', body: 'Unwavering dedication to delivering exceptional results and lasting value.' },
+];
+---
+
+<Layout title="About Us" description="Lead Surges is a client-focused SEO and digital marketing agency in Apple Valley, CA. We help business owners enhance their online presence with tailored strategies.">
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 lg:pt-32 lg:pb-24">
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">About Us</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-4xl">
+        Your vision drives <span class="text-gradient">our mission.</span>
+      </h1>
+      <p class="mt-7 text-lg text-white/70 max-w-3xl leading-relaxed">
+        Lead Surges is a client-focused digital marketing agency. We equip projects of all sizes with the resources they need to succeed online — through SEO, PPC, and web design built around your business, not a template.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Our Story</p>
+          <h2 class="font-display font-bold text-3xl lg:text-4xl text-white leading-tight mb-6">
+            Built in the High Desert. Trusted nationwide.
+          </h2>
+          <div class="space-y-4 text-white/70 leading-relaxed">
+            <p>
+              We started Lead Surges because too many business owners were getting burned by agencies that promised the world and delivered spreadsheets full of vanity metrics.
+            </p>
+            <p>
+              Real SEO takes craft. It takes patience. And it takes a partner who actually understands your business and reports on what matters: leads, calls, and revenue.
+            </p>
+            <p>
+              That's what we do. We work with a focused roster of clients so we can give every engagement the attention it deserves — and ship real results, not status updates.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="aspect-square max-w-md mx-auto relative">
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-600 via-fuchsia-500 to-pink-500 blur-2xl opacity-40"></div>
+            <div class="relative w-full h-full rounded-3xl bg-gradient-to-br from-purple-600 to-fuchsia-600 p-1">
+              <div class="w-full h-full rounded-3xl bg-[#0a0510] p-8 flex flex-col justify-end">
+                <div class="text-5xl lg:text-6xl font-display font-extrabold text-gradient mb-2">100%</div>
+                <p class="text-white/70 text-sm">of our clients get a real human as their account lead — not a ticketing system.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="max-w-2xl mb-14">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">What we stand for</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          Six values that guide our work.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {values.map((v, i) => (
+          <div class="p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10">
+            <div class="text-2xl font-display font-extrabold text-gradient mb-3">0{i + 1}</div>
+            <h3 class="text-lg font-display font-bold text-white mb-2">{v.title}</h3>
+            <p class="text-white/65 text-sm leading-relaxed">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-5">Let's build something together.</h2>
+        <p class="text-white/70 mb-8 text-lg">Schedule a free consultation and we'll talk through your goals.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <Button href="/contact" size="lg">Get in touch</Button>
+          <Button href="/services" variant="secondary" size="lg">Our services</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
