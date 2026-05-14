@@ -98,12 +98,8 @@ const locations = [
             </div>
             <div class="absolute -bottom-4 -right-4 px-4 py-3 rounded-2xl bg-[#0f0a18] border border-white/10 shadow-xl">
               <div class="flex items-center gap-2">
-                <div class="flex -space-x-2">
-                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 border-2 border-[#0f0a18]"></div>
-                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-500 border-2 border-[#0f0a18]"></div>
-                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 border-2 border-[#0f0a18]"></div>
-                </div>
-                <span class="text-xs text-white/70 font-medium">Trusted by local businesses</span>
+                <svg class="w-4 h-4 text-purple-300" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
+                <span class="text-xs text-white/70 font-medium">Trusted by High Desert brands</span>
               </div>
             </div>
           </div>
@@ -111,6 +107,48 @@ const locations = [
       </div>
     </div>
   </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-12 lg:py-16 border-t border-white/5">
+      <p class="text-center text-purple-300/80 text-xs font-semibold uppercase tracking-[0.2em] mb-10 reveal">
+        Trusted by brands across the High Desert
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 items-stretch">
+        {[
+          { src: '/logos/bear-valley-urgent-care.png', alt: 'Bear Valley Urgent Care' },
+          { src: '/logos/choice-medical-group.png', alt: 'Choice Medical Group' },
+          { src: '/logos/hyundai.svg', alt: 'Hyundai' },
+          { src: '/logos/mazda.svg', alt: 'Mazda' },
+          { src: '/logos/genesis.svg', alt: 'Genesis' },
+          { src: '/logos/car-xchange.png', alt: 'CarXchange' },
+        ].map((logo, i) => (
+          <div
+            class:list={['client-logo-card flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 px-4 py-6 hover:bg-white/[0.06] hover:border-white/20 transition-all reveal', `reveal-delay-${(i % 4) + 1}`]}
+            title={logo.alt}
+          >
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+              class="max-h-10 lg:max-h-12 w-auto max-w-full object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .client-logo-card img {
+      filter: grayscale(1) brightness(1.6) contrast(0.95);
+      opacity: 0.75;
+      transition: opacity 200ms ease, filter 200ms ease;
+    }
+    .client-logo-card:hover img {
+      filter: grayscale(0) brightness(1) contrast(1);
+      opacity: 1;
+    }
+  </style>
 
   <section class="relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28 border-t border-white/5">
