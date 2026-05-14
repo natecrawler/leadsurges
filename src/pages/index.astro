@@ -140,12 +140,18 @@ const locations = [
 
   <style>
     .client-logo-card img {
-      filter: grayscale(1) brightness(1.6) contrast(0.95);
-      opacity: 0.75;
       transition: opacity 200ms ease, filter 200ms ease;
     }
+    .client-logo-card img[src$=".svg"] {
+      filter: brightness(0) invert(1);
+      opacity: 0.72;
+    }
+    .client-logo-card img[src$=".png"] {
+      filter: grayscale(1) brightness(1.7) contrast(0.95);
+      opacity: 0.78;
+    }
     .client-logo-card:hover img {
-      filter: grayscale(0) brightness(1) contrast(1);
+      filter: none;
       opacity: 1;
     }
   </style>
