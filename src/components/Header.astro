@@ -9,18 +9,27 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services', hasSubmenu: true },
   { href: '/about', label: 'About Us' },
-  { href: '/contact', label: 'Contact' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ];
 
-const locations = [
-  { slug: 'apple-valley', label: 'Apple Valley' },
-  { slug: 'victorville', label: 'Victorville' },
-  { slug: 'hesperia', label: 'Hesperia' },
-  { slug: 'barstow', label: 'Barstow' },
-  { slug: 'lucerne-valley', label: 'Lucerne Valley' },
-  { slug: 'adelanto', label: 'Adelanto' },
+const services = [
+  {
+    slug: 'paid-search',
+    label: 'Paid Search',
+    sub: 'Google Ads campaigns built for ROI.',
+  },
+  {
+    slug: 'seo',
+    label: 'SEO',
+    sub: 'Rank where your customers are searching.',
+  },
+  {
+    slug: 'web-design',
+    label: 'Web Design',
+    sub: 'Sites built to convert visitors into leads.',
+  },
 ];
 ---
 
@@ -56,14 +65,17 @@ const locations = [
           </a>
           {hasSubmenu && (
             <div class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-              <div class="bg-[#0f0a18] border border-white/10 rounded-xl py-2 min-w-[200px] shadow-xl shadow-black/50">
-                <a href="/services" class="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">All Services</a>
-                <div class="my-1 border-t border-white/5"></div>
-                {locations.map((loc) => (
-                  <a href={`/services/${loc.slug}`} class="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5">
-                    SEO in {loc.label}
+              <div class="bg-[#0f0a18] border border-white/10 rounded-2xl p-2 min-w-[280px] shadow-xl shadow-black/50">
+                {services.map((s) => (
+                  <a href={`/services/${s.slug}`} class="block px-4 py-3 rounded-xl hover:bg-white/5 group/item transition-colors">
+                    <div class="font-display font-semibold text-white text-sm">{s.label}</div>
+                    <div class="text-white/55 text-xs mt-0.5">{s.sub}</div>
                   </a>
                 ))}
+                <div class="my-1 border-t border-white/5"></div>
+                <a href="/services" class="block px-4 py-2 text-xs text-purple-300 hover:text-purple-200 font-semibold">
+                  View all services →
+                </a>
               </div>
             </div>
           )}

@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const pillars = [
+  {
+    title: 'Campaign Strategy',
+    body: 'Audience research, competitor analysis, and a campaign architecture mapped to your real business goals — not vanity metrics.',
+  },
+  {
+    title: 'Keyword & Intent Research',
+    body: 'We bid on the keywords that bring buyers, not browsers. Negative-keyword lists block the wasted clicks most agencies ignore.',
+  },
+  {
+    title: 'Ad Copy & Creative',
+    body: 'Multiple ad variations tested against each other so the best performer rises — not the one we guessed would work.',
+  },
+  {
+    title: 'Landing Page Recommendations',
+    body: "Ads only convert if the page they hit is built for it. We'll flag conversion leaks and recommend fixes that lift ROI without scaling spend.",
+  },
+  {
+    title: 'Conversion Tracking',
+    body: 'GA4 + Google Ads conversion tracking set up properly so we can prove what every dollar produced.',
+  },
+  {
+    title: 'Ongoing Optimization',
+    body: 'Daily bid management, weekly creative refreshes, monthly strategic reviews. PPC rewards relentless iteration.',
+  },
+];
+
+const process = [
+  { n: '01', title: 'Audit & Discovery', body: 'We review your current ad accounts (or audit competitors if you\'re new) and lock down the goals.' },
+  { n: '02', title: 'Build & Launch', body: 'Account structure, ad copy, landing page recs, and tracking — built and shipped within 2 weeks.' },
+  { n: '03', title: 'Optimize Daily', body: 'Bid adjustments, negative keywords, ad rotation. Most of the gains come from the unglamorous daily work.' },
+  { n: '04', title: 'Report & Strategize', body: 'Monthly report focused on ROAS and lead quality — plus the strategic next move.' },
+];
+---
+
+<Layout
+  title="Paid Search (Google Ads) Services"
+  description="Google Ads campaigns built for ROI — not impressions. Daily optimization, conversion tracking, and reports that focus on the metrics that pay your bills."
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 lg:pt-32 lg:pb-24">
+      <a href="/services" class="inline-flex items-center gap-1 text-purple-300 text-sm font-medium mb-6 hover:text-purple-200">
+        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4L6 8l4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All services
+      </a>
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Paid Search</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-4xl">
+        Google Ads built for <span class="text-gradient">profit, not impressions.</span>
+      </h1>
+      <p class="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">
+        Most agencies optimize for clicks. We optimize for conversions and ROAS. Every dollar spent gets tracked, attributed, and reported on monthly.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <Button href="/contact" size="lg">Get a free audit</Button>
+        <Button href="/pricing" variant="secondary" size="lg">See pricing</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">What's included</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          Full-service Google Ads management.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {pillars.map((p, i) => (
+          <div class:list={['relative p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10 reveal', `reveal-delay-${(i % 4) + 1}`]}>
+            <h3 class="text-lg font-display font-bold text-white mb-2">{p.title}</h3>
+            <p class="text-white/65 text-sm leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Why us</p>
+          <h2 class="font-display font-bold text-3xl lg:text-4xl text-white leading-tight mb-6">
+            Most PPC agencies <span class="text-gradient">hide behind impressions.</span>
+          </h2>
+          <p class="text-white/70 leading-relaxed mb-4">
+            We report on ROAS, cost per lead, and revenue — the numbers that actually tell you whether the campaign is working.
+          </p>
+          <p class="text-white/70 leading-relaxed">
+            Plus, our reports are written in plain English. If you don't understand exactly where your money went, that's our failure, not yours.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 reveal reveal-delay-2">
+          {[
+            { stat: '4.2x', label: 'avg. ROAS across active accounts' },
+            { stat: '38%', label: 'avg. CPC reduction in 90 days' },
+            { stat: '< 14d', label: 'from kickoff to campaigns live' },
+            { stat: '0', label: 'long-term contracts required' },
+          ].map((s) => (
+            <div class="p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10">
+              <div class="text-3xl lg:text-4xl font-display font-extrabold text-gradient mb-2">{s.stat}</div>
+              <p class="text-white/65 text-sm leading-snug">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Process</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          From audit to live campaigns in two weeks.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {process.map((step, i) => (
+          <div class:list={['relative p-6 rounded-2xl bg-white/[0.02] border border-white/5 reveal', `reveal-delay-${i + 1}`]}>
+            <div class="text-4xl font-display font-extrabold text-gradient mb-4">{step.n}</div>
+            <h3 class="text-lg font-display font-bold text-white mb-2">{step.title}</h3>
+            <p class="text-white/65 text-sm leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
+      <div class="relative overflow-hidden rounded-3xl p-[1px] bg-gradient-to-br from-purple-500/40 via-purple-500/10 to-fuchsia-500/30 reveal">
+        <div class="relative rounded-[calc(1.5rem-1px)] bg-[#0a0510] p-10 lg:p-16 overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none opacity-70">
+            <div class="absolute -top-32 -right-24 w-[420px] h-[420px] rounded-full bg-purple-600/20 blur-3xl"></div>
+            <div class="absolute -bottom-32 -left-24 w-[360px] h-[360px] rounded-full bg-fuchsia-500/15 blur-3xl"></div>
+          </div>
+          <div class="relative max-w-2xl">
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+              See where your <span class="text-gradient">ad spend is leaking.</span>
+            </h2>
+            <p class="mt-5 text-white/70 leading-relaxed text-lg">
+              Free audit of your existing Google Ads account. We'll show you exactly what's working and what's burning budget.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <Button href="/contact" size="lg">Get my free audit</Button>
+              <Button href="tel:+17604759158" variant="secondary" size="lg">(760) 475-9158</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

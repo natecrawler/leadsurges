@@ -2,37 +2,31 @@
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 
-const services = [
+const pillars = [
   {
-    slug: 'paid-search',
-    title: 'Paid Search',
-    tagline: 'Google Ads, ROI-first.',
-    desc: 'Profitable Google Ads campaigns built around conversions, not impressions. Daily optimization, transparent reporting.',
-    points: ['Campaign Strategy', 'Keyword & Intent Research', 'Conversion Tracking', 'Daily Optimization'],
-    icon: 'graph',
-  },
-  {
-    slug: 'seo',
-    title: 'SEO',
-    tagline: 'Rank where it counts.',
-    desc: 'Technical, on-page, and off-page SEO that compounds over time. Local SEO is our specialty.',
-    points: ['Technical SEO', 'On-Page Optimization', 'Off-Page Link Building', 'Local SEO'],
+    title: 'Technical SEO',
+    desc: 'Website infrastructure that search engines love. We audit, fix, and continuously refine.',
+    points: ['Website Speed Optimization', 'Crawl & Visibility', 'Mobile Responsiveness', 'Core Web Vitals'],
     icon: 'cube',
   },
   {
-    slug: 'web-design',
-    title: 'Web Design',
-    tagline: 'Built to convert.',
-    desc: 'Marketing-focused websites that turn visitors into leads. Fast, mobile-first, SEO-friendly.',
-    points: ['Conversion-First Design', 'Built for Speed', 'Mobile-First Layouts', 'SEO-Friendly Foundation'],
+    title: 'On-Page SEO',
+    desc: 'Content and structure optimized for both readers and ranking algorithms.',
+    points: ['Keyword Research', 'Meta Tags & Headers', 'Internal Linking', 'Content Strategy'],
     icon: 'pencil',
+  },
+  {
+    title: 'Off-Page SEO',
+    desc: 'Authority and visibility built through quality backlinks and brand outreach.',
+    points: ['Backlink Acquisition', 'Domain Authority', 'Competitive Link Analysis', 'Brand Outreach'],
+    icon: 'link',
   },
 ];
 
 const process = [
   { n: '01', title: 'Initial consultation', body: 'We clarify your business objectives and what success looks like.' },
-  { n: '02', title: 'Audit & research', body: 'Audit, competitor analysis, and a baseline of where you stand today.' },
-  { n: '03', title: 'Strategy & implementation', body: 'A tailored plan executed by specialists, not generalists.' },
+  { n: '02', title: 'Audit & research', body: 'Website audit, competitor analysis, and keyword research.' },
+  { n: '03', title: 'Strategy & implementation', body: 'A tailored plan executed by SEO specialists, not generalists.' },
   { n: '04', title: 'Monitoring & reporting', body: 'Monthly performance reports with clear next steps.' },
 ];
 
@@ -46,42 +40,52 @@ const locations = [
 ];
 ---
 
-<Layout title="Services" description="Paid Search, SEO, and Web Design — three services built to grow real businesses. Executed by specialists, not generalists.">
+<Layout
+  title="SEO Services"
+  description="Technical SEO, on-page optimization, and off-page link building — built to drive organic traffic and grow your business long-term."
+>
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
     </div>
-    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 lg:pt-32 lg:pb-20">
-      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Services</p>
-      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-3xl">
-        Three services. <span class="text-gradient">One outcome: growth.</span>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 lg:pt-32 lg:pb-24">
+      <a href="/services" class="inline-flex items-center gap-1 text-purple-300 text-sm font-medium mb-6 hover:text-purple-200">
+        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4L6 8l4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All services
+      </a>
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">SEO</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-4xl">
+        Rank where your <span class="text-gradient">customers are searching.</span>
       </h1>
       <p class="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">
-        We focus on the three channels that move the needle for real businesses. No bloated retainers, no service-list theater — just the work that drives leads.
+        SEO that compounds. Three core service areas executed by specialists — no generalist agency churn, every engagement gets a tailored strategy.
       </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <Button href="/contact" size="lg">Get a free audit</Button>
+        <Button href="/pricing" variant="secondary" size="lg">See pricing</Button>
+      </div>
     </div>
   </section>
 
   <section class="relative">
-    <div class="mx-auto max-w-7xl px-6 lg:px-10 pb-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Three pillars</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          The full SEO playbook.
+        </h2>
+      </div>
       <div class="grid lg:grid-cols-3 gap-6">
-        {services.map((s, i) => (
-          <a
-            href={`/services/${s.slug}`}
-            class:list={[
-              'group relative p-8 rounded-2xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 hover:bg-[#150d22]/80 transition-all flex flex-col reveal',
-              `reveal-delay-${i + 1}`,
-            ]}
-          >
+        {pillars.map((s, i) => (
+          <div class:list={['relative p-8 rounded-2xl bg-[#0f0a18]/60 border border-white/10 reveal', `reveal-delay-${i + 1}`]}>
             <div class="w-14 h-14 mb-6 flex items-center justify-center rounded-xl bg-purple-500/10 border border-purple-400/30 text-purple-300">
               {s.icon === 'cube' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 7.5 12 2 3 7.5m18 0L12 13M21 7.5v9L12 22m-9-14.5L12 13m-9-5.5v9L12 22m0-9v9" stroke-linejoin="round" stroke-linecap="round"/></svg>}
               {s.icon === 'pencil' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke-linejoin="round" stroke-linecap="round"/></svg>}
-              {s.icon === 'graph' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17L9 11L13 15L21 7M21 7H15M21 7V13" stroke-linejoin="round" stroke-linecap="round"/></svg>}
+              {s.icon === 'link' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>}
             </div>
-            <p class="text-purple-300 text-sm font-semibold mb-2">{s.tagline}</p>
-            <h2 class="text-2xl font-display font-bold text-white mb-3">{s.title}</h2>
+            <h3 class="text-2xl font-display font-bold text-white mb-3">{s.title}</h3>
             <p class="text-white/65 leading-relaxed mb-6">{s.desc}</p>
-            <ul class="space-y-2 mb-8 flex-1">
+            <ul class="space-y-2">
               {s.points.map((p) => (
                 <li class="text-white/75 text-sm flex items-start gap-2">
                   <svg class="w-4 h-4 mt-0.5 text-purple-400 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.3 7.3a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 1 1 1.4-1.4L8.7 12l6.6-6.6a1 1 0 0 1 1.4 0z"/></svg>
@@ -89,11 +93,7 @@ const locations = [
                 </li>
               ))}
             </ul>
-            <span class="inline-flex items-center gap-1 text-purple-300 text-sm font-semibold group-hover:text-purple-200 transition-colors">
-              Learn more
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
+          </div>
         ))}
       </div>
     </div>
@@ -104,7 +104,7 @@ const locations = [
       <div class="max-w-2xl mb-14 reveal">
         <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Process</p>
         <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-          A clear path, on every engagement.
+          A four-step path to better rankings.
         </h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -126,9 +126,6 @@ const locations = [
         <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
           Local SEO across the High Desert.
         </h2>
-        <p class="mt-5 text-white/70 leading-relaxed">
-          Local SEO is our specialty. We serve businesses across the High Desert and Inland Empire.
-        </p>
       </div>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {locations.map((loc, i) => (
@@ -149,12 +146,24 @@ const locations = [
 
   <section class="relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
-      <div class="text-center max-w-2xl mx-auto reveal">
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-5">Ready to get started?</h2>
-        <p class="text-white/70 mb-8 text-lg">View pricing or reach out for a free consultation.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <Button href="/pricing" size="lg">View Pricing</Button>
-          <Button href="/contact" variant="secondary" size="lg">Contact Us</Button>
+      <div class="relative overflow-hidden rounded-3xl p-[1px] bg-gradient-to-br from-purple-500/40 via-purple-500/10 to-fuchsia-500/30 reveal">
+        <div class="relative rounded-[calc(1.5rem-1px)] bg-[#0a0510] p-10 lg:p-16 overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none opacity-70">
+            <div class="absolute -top-32 -right-24 w-[420px] h-[420px] rounded-full bg-purple-600/20 blur-3xl"></div>
+            <div class="absolute -bottom-32 -left-24 w-[360px] h-[360px] rounded-full bg-fuchsia-500/15 blur-3xl"></div>
+          </div>
+          <div class="relative max-w-2xl">
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+              Ready to watch your <span class="text-gradient">organic traffic climb?</span>
+            </h2>
+            <p class="mt-5 text-white/70 leading-relaxed text-lg">
+              Free SEO audit, no commitment. We'll show you exactly what's holding your rankings back.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <Button href="/contact" size="lg">Get my free audit</Button>
+              <Button href="/pricing" variant="secondary" size="lg">See pricing</Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

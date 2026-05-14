@@ -5,24 +5,22 @@ import ServiceCard from '../components/ServiceCard.astro';
 
 const services = [
   {
-    title: 'SEO',
-    icon: 'cube' as const,
-    features: ['Local SEO', 'Content Creation', 'Customized Strategy', 'Increased Online Visibility'],
-  },
-  {
-    title: 'On-Page Optimization',
-    icon: 'pencil' as const,
-    features: ['Keyword Research', 'Meta Tags & Headers', 'Internal Linking', 'Content Refinement'],
-  },
-  {
-    title: 'Off-Page SEO',
-    icon: 'link' as const,
-    features: ['Backlink Acquisition', 'Domain Authority', 'Competitive Analysis', 'Brand Outreach'],
-  },
-  {
-    title: 'Performance Reporting',
+    title: 'Paid Search',
+    href: '/services/paid-search',
     icon: 'graph' as const,
-    features: ['Monthly Reports', 'Rank Tracking', 'Traffic Analysis', 'Transparent Wins'],
+    features: ['Google Ads management', 'Conversion tracking', 'Daily optimization', 'ROAS-focused reporting'],
+  },
+  {
+    title: 'SEO',
+    href: '/services/seo',
+    icon: 'cube' as const,
+    features: ['Technical SEO', 'On-page optimization', 'Off-page link building', 'Local SEO'],
+  },
+  {
+    title: 'Web Design',
+    href: '/services/web-design',
+    icon: 'pencil' as const,
+    features: ['Conversion-focused design', 'Built for speed', 'Mobile-first layouts', 'SEO-friendly foundation'],
   },
 ];
 
@@ -156,7 +154,7 @@ const locations = [
           Services that turn search traffic into customers.
         </h2>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s, i) => (
           <div class:list={['reveal', `reveal-delay-${i + 1}`]}>
             <ServiceCard {...s} />
