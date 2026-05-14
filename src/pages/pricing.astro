@@ -2,31 +2,82 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 
-const tiers = [
+const paidSearchTiers = [
+  {
+    name: 'Launch',
+    price: 750,
+    priceSuffix: '/month',
+    desc: 'For businesses launching their first Google Ads campaigns.',
+    meta: 'Manages up to $3,000/mo in ad spend',
+    featured: false,
+    features: [
+      'Account setup & strategy',
+      'Search campaign management',
+      'Conversion tracking setup',
+      'Ad copy + A/B testing',
+      'Monthly performance report',
+    ],
+  },
+  {
+    name: 'Growth',
+    price: 1500,
+    priceSuffix: '/month',
+    desc: 'Most popular — for businesses ready to scale paid acquisition.',
+    meta: 'Manages up to $10,000/mo in ad spend',
+    featured: true,
+    features: [
+      'Everything in Launch',
+      'Multi-campaign architecture',
+      'Display + retargeting',
+      'Landing page recommendations',
+      'Bi-weekly optimization calls',
+      'Competitor monitoring',
+    ],
+  },
+  {
+    name: 'Scale',
+    price: 'Custom',
+    priceSuffix: '',
+    desc: 'For businesses spending $10k+/month on ads.',
+    meta: 'Typically 10–15% of monthly ad spend',
+    featured: false,
+    features: [
+      'Everything in Growth',
+      'Shopping & Performance Max',
+      'Dedicated strategist',
+      'Weekly reporting + calls',
+      'Creative production support',
+      'Priority response',
+    ],
+  },
+];
+
+const seoTiers = [
   {
     name: 'Bronze',
     price: 1500,
+    priceSuffix: '/month',
     desc: 'Solid foundation for businesses just getting serious about SEO.',
-    keywords: 4,
+    meta: '4 target keywords',
     featured: false,
     features: [
       'On-page optimization',
-      'Performance reporting',
       'Keyword research',
       'Link acquisition',
       'Content creation',
       'Monthly strategy call',
+      'Performance reporting',
     ],
   },
   {
     name: 'Silver',
     price: 2000,
-    desc: 'Our most popular tier — built to accelerate growth for established businesses.',
-    keywords: 6,
+    priceSuffix: '/month',
+    desc: 'Most popular — built to accelerate growth for established businesses.',
+    meta: '6 target keywords',
     featured: true,
     features: [
       'Everything in Bronze',
-      '6 target keywords',
       'Expanded content production',
       'Aggressive link building',
       'Competitor monitoring',
@@ -36,12 +87,12 @@ const tiers = [
   {
     name: 'Gold',
     price: 3000,
+    priceSuffix: '/month',
     desc: 'Maximum velocity for businesses serious about dominating their market.',
-    keywords: 10,
+    meta: '10 target keywords',
     featured: false,
     features: [
       'Everything in Silver',
-      '10 target keywords',
       'Full content strategy',
       'Premium link building',
       'Technical SEO deep-dives',
@@ -50,80 +101,168 @@ const tiers = [
   },
 ];
 
+const webDesignTiers = [
+  {
+    name: 'Essentials',
+    price: 3500,
+    priceSuffix: ' one-time',
+    desc: 'A clean, fast site for businesses that need to launch quickly.',
+    meta: 'Up to 5 pages',
+    featured: false,
+    features: [
+      'Custom design (no templates)',
+      'Mobile-first responsive build',
+      'Contact form + analytics',
+      'SEO-friendly foundation',
+      'Launch in ~3 weeks',
+    ],
+  },
+  {
+    name: 'Professional',
+    price: 7500,
+    priceSuffix: ' one-time',
+    desc: 'Most popular — a full marketing site with content tooling.',
+    meta: 'Up to 12 pages + blog',
+    featured: true,
+    features: [
+      'Everything in Essentials',
+      'Custom-designed page templates',
+      'Blog / content system',
+      'Conversion-focused CTAs',
+      'Page speed optimization',
+      'Launch in ~6 weeks',
+    ],
+  },
+  {
+    name: 'Custom',
+    price: 'From $15k',
+    priceSuffix: '',
+    desc: 'For businesses that need bespoke functionality or integrations.',
+    meta: 'Scoped to project',
+    featured: false,
+    features: [
+      'Everything in Professional',
+      'Custom integrations',
+      'E-commerce / membership / portals',
+      'Multi-location architecture',
+      'Ongoing maintenance available',
+    ],
+  },
+];
+
+const services = [
+  { id: 'paid-search', label: 'Paid Search', sub: 'Google Ads management', tiers: paidSearchTiers },
+  { id: 'seo', label: 'SEO', sub: 'Monthly retainer', tiers: seoTiers },
+  { id: 'web-design', label: 'Web Design', sub: 'Project-based', tiers: webDesignTiers },
+];
+
 const faqs = [
   {
     q: 'How long does SEO take to work?',
-    a: "Most clients see initial movement in 3 months and meaningful traffic gains between months 4–6. SEO compounds — the longer you stick with it, the bigger the returns get.",
+    a: 'Most clients see initial movement in 3 months and meaningful traffic gains between months 4–6. SEO compounds — the longer you stick with it, the bigger the returns get.',
   },
   {
     q: 'Are there setup fees or long-term contracts?',
-    a: "No setup fees. We work on month-to-month engagements because our results should keep you, not a contract.",
+    a: 'No setup fees on Paid Search or SEO retainers, and both run month-to-month. Web Design is project-based with a deposit and milestone payments.',
   },
   {
-    q: "What's included in 'target keywords'?",
-    a: "The keywords we actively optimize and track for ranking improvement. Each tier covers a different volume — we'll help you pick the right ones during onboarding.",
+    q: 'Does my Paid Search budget include ad spend?',
+    a: 'No — management fees and ad spend are separate. You pay Google directly for ad spend, and we manage the campaigns. This keeps things transparent.',
   },
   {
     q: 'Do you offer custom packages?',
-    a: 'Yes. If your business needs something more specific — enterprise SEO, multi-location strategies, e-commerce — get in touch and we\'ll scope it.',
+    a: "Yes. If your business needs something more specific — enterprise SEO, multi-location strategies, e-commerce — get in touch and we'll scope it.",
+  },
+  {
+    q: 'Can I combine services?',
+    a: "Absolutely. Most of our best clients run Paid Search + SEO together. We'll bundle pricing and align the strategies so they reinforce each other.",
   },
 ];
 ---
 
-<Layout title="Pricing" description="Transparent SEO pricing — Bronze, Silver, and Gold packages starting at $1,500/month. No setup fees, no long-term contracts.">
+<Layout title="Pricing" description="Transparent pricing across Paid Search, SEO, and Web Design. No setup fees, no surprise invoices, no long-term contracts.">
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/25 via-fuchsia-500/15 to-transparent blur-3xl"></div>
     </div>
-    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 lg:pt-32 lg:pb-20 text-center">
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-12 lg:pt-32 lg:pb-16 text-center">
       <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Pricing</p>
       <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-3xl mx-auto">
         Simple pricing. <span class="text-gradient">Predictable growth.</span>
       </h1>
       <p class="mt-7 text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-        Three tiers, month-to-month. No setup fees, no surprise invoices. Just SEO work that compounds.
+        Three services, three pricing models, all transparent. No setup fees, no surprise invoices.
       </p>
+
+      <div class="mt-10 inline-flex flex-wrap justify-center gap-2 p-1.5 rounded-full bg-white/5 border border-white/10">
+        {services.map((s) => (
+          <a href={`#${s.id}`} class="px-5 py-2 rounded-full text-sm font-medium text-white/75 hover:text-white hover:bg-white/5 transition-colors">
+            {s.label}
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="relative">
-    <div class="mx-auto max-w-7xl px-6 lg:px-10 pb-16">
-      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {tiers.map((tier) => (
-          <div class:list={[
-            'relative p-8 rounded-3xl border transition-all',
-            tier.featured
-              ? 'bg-gradient-to-br from-purple-700/40 via-purple-600/20 to-fuchsia-600/30 border-purple-400/50 shadow-2xl shadow-purple-500/20 md:scale-105'
-              : 'bg-[#0f0a18]/60 border-white/10',
-          ]}>
-            {tier.featured && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-brand text-white text-xs font-semibold uppercase tracking-wider">
-                Most Popular
+  {services.map((service, sIdx) => (
+    <section id={service.id} class="relative scroll-mt-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10 py-16 lg:py-20 border-t border-white/5">
+        <div class="text-center mb-12 reveal">
+          <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-3">{service.sub}</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+            {service.label}
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {service.tiers.map((tier, i) => (
+            <div class:list={[
+              'relative p-8 rounded-3xl border transition-all flex flex-col reveal',
+              `reveal-delay-${i + 1}`,
+              tier.featured
+                ? 'bg-gradient-to-br from-purple-700/30 via-purple-600/15 to-fuchsia-600/20 border-purple-400/40 shadow-2xl shadow-purple-500/10 md:scale-105'
+                : 'bg-[#0f0a18]/60 border-white/10',
+            ]}>
+              {tier.featured && (
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-brand text-white text-xs font-semibold uppercase tracking-wider">
+                  Most Popular
+                </div>
+              )}
+              <h3 class="text-2xl font-display font-bold text-white mb-2">{tier.name}</h3>
+              <p class="text-white/65 text-sm leading-relaxed mb-6 min-h-[3rem]">{tier.desc}</p>
+              <div class="mb-2">
+                {typeof tier.price === 'number' ? (
+                  <>
+                    <span class="text-5xl font-display font-extrabold text-white">${tier.price.toLocaleString()}</span>
+                    <span class="text-white/60 ml-2">{tier.priceSuffix}</span>
+                  </>
+                ) : (
+                  <span class="text-4xl lg:text-5xl font-display font-extrabold text-white">{tier.price}</span>
+                )}
               </div>
-            )}
-            <h2 class="text-2xl font-display font-bold text-white mb-2">{tier.name}</h2>
-            <p class="text-white/65 text-sm leading-relaxed mb-6 min-h-[3rem]">{tier.desc}</p>
-            <div class="mb-6">
-              <span class="text-5xl font-display font-extrabold text-white">${tier.price.toLocaleString()}</span>
-              <span class="text-white/60 ml-2">/month</span>
+              <div class="text-sm text-purple-300 font-semibold mb-6">{tier.meta}</div>
+              <ul class="space-y-3 mb-8 flex-1">
+                {tier.features.map((f) => (
+                  <li class="text-white/75 text-sm flex items-start gap-2">
+                    <svg class="w-4 h-4 mt-0.5 text-purple-400 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.3 7.3a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 1 1 1.4-1.4L8.7 12l6.6-6.6a1 1 0 0 1 1.4 0z"/></svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Button href="/contact" variant={tier.featured ? 'primary' : 'secondary'} class="w-full">
+                {typeof tier.price === 'number' ? 'Get started' : 'Talk to us'}
+              </Button>
             </div>
-            <div class="text-sm text-purple-300 font-semibold mb-6">{tier.keywords} target keywords</div>
-            <ul class="space-y-3 mb-8">
-              {tier.features.map((f) => (
-                <li class="text-white/75 text-sm flex items-start gap-2">
-                  <svg class="w-4 h-4 mt-0.5 text-purple-400 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.3 7.3a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 1 1 1.4-1.4L8.7 12l6.6-6.6a1 1 0 0 1 1.4 0z"/></svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <Button href="/contact" variant={tier.featured ? 'primary' : 'secondary'} class="w-full">
-              Get started
-            </Button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <p class="text-center text-white/50 text-sm mt-8">
-        Need something custom? <a href="/contact" class="text-purple-300 hover:text-purple-200 font-medium">Talk to us.</a>
+    </section>
+  ))}
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-12 border-t border-white/5">
+      <p class="text-center text-white/55 text-sm">
+        Combining services? <a href="/contact" class="text-purple-300 hover:text-purple-200 font-medium">Get in touch</a> for bundled pricing — most clients pair Paid Search with SEO for compounding results.
       </p>
     </div>
   </section>
@@ -132,7 +271,7 @@ const faqs = [
     <div class="mx-auto max-w-3xl px-6 lg:px-10 py-20 border-t border-white/5">
       <h2 class="font-display font-bold text-3xl lg:text-4xl text-white mb-10 text-center">Questions, answered.</h2>
       <div class="space-y-3">
-        {faqs.map((f, i) => (
+        {faqs.map((f) => (
           <details class="group p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 open:border-purple-400/30">
             <summary class="flex items-center justify-between cursor-pointer list-none">
               <span class="font-display font-semibold text-white">{f.q}</span>
