@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
+import PricingTiers from '../../components/PricingTiers.astro';
+import { seoTiers } from '../../data/pricing';
 
 const pillars = [
   {
@@ -141,6 +143,21 @@ const locations = [
           </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Pricing</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          Monthly retainers, <span class="text-gradient">no contracts.</span>
+        </h2>
+        <p class="mt-5 text-white/65 leading-relaxed">
+          Tiered by the number of target keywords we actively optimize. <a href="/pricing#seo" class="text-purple-300 hover:text-purple-200 font-medium">See full pricing details</a>.
+        </p>
+      </div>
+      <PricingTiers tiers={seoTiers} />
     </div>
   </section>
 
