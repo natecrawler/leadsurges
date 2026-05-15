@@ -209,11 +209,15 @@ import LeadForm from './LeadForm.astro';
       document.body.classList.remove('modal-open');
     });
 
-    // AJAX submit so we can show inline success without leaving the page
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    // AJAX submit so we can show inline success without leaving the page.
+    // If AJAX fails (e.g. Netlify Forms not detected), fall back to a
+    // traditional form post so the submission still goes through.
+    let useAjax = true;
+    const onSubmit = async (e: Event) => {
       if (!form || !submitBtn || !submitLabel) return;
+      if (!useAjax) return; // let the browser handle it normally
 
+      e.preventDefault();
       submitBtn.disabled = true;
       const origLabel = submitLabel.textContent;
       submitLabel.textContent = 'Sending…';
@@ -229,14 +233,17 @@ import LeadForm from './LeadForm.astro';
         if (!res.ok) throw new Error(`Submission failed (${res.status})`);
         formPanel?.setAttribute('hidden', '');
         successPanel?.removeAttribute('hidden');
-      } catch (err) {
-        console.error(err);
-        submitLabel.textContent = 'Try again';
         submitBtn.disabled = false;
-        return;
+        submitLabel.textContent = origLabel;
+      } catch (err) {
+        console.error('Modal AJAX submit failed, falling back to standard submit', err);
+        // Fall back: disable AJAX and let the browser submit normally
+        // to the form's action URL (Netlify redirects to /thank-you on success).
+        useAjax = false;
+        submitLabel.textContent = 'Sending…';
+        form.submit();
       }
-      submitBtn.disabled = false;
-      submitLabel.textContent = origLabel;
-    });
+    };
+    form?.addEventListener('submit', onSubmit);
   }
 </script>
