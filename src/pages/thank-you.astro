@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout
+  title="Thanks — we got it"
+  description="Your message has been received. We'll be in touch within one business day."
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-purple-600/30 via-fuchsia-500/20 to-transparent blur-3xl"></div>
+      <div class="absolute top-40 -left-20 w-[400px] h-[400px] rounded-full bg-purple-700/20 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-6 lg:px-10 pt-32 pb-40 text-center">
+      <div class="inline-flex w-20 h-20 mb-10 items-center justify-center rounded-full bg-purple-500/15 border border-purple-400/40 text-purple-300">
+        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Message received</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] mb-6">
+        Thanks — <span class="text-gradient">we got it.</span>
+      </h1>
+      <p class="text-lg text-white/70 leading-relaxed mb-10 max-w-xl mx-auto">
+        We'll review your details and get back to you within one business day. If it's urgent, give us a call.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <Button href="tel:+17605239428" size="lg">(760) 523-9428</Button>
+        <Button href="/" variant="secondary" size="lg">Back to home</Button>
+      </div>
+
+      <div class="pt-12 border-t border-white/5 grid sm:grid-cols-3 gap-6 text-left max-w-2xl mx-auto">
+        <a href="/blog" class="group p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 transition-all">
+          <div class="text-purple-300 text-xs font-semibold uppercase tracking-wider mb-2">While you wait</div>
+          <div class="text-white font-display font-bold text-sm group-hover:text-purple-200 transition-colors">Read the blog</div>
+        </a>
+        <a href="/services" class="group p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 transition-all">
+          <div class="text-purple-300 text-xs font-semibold uppercase tracking-wider mb-2">Learn more</div>
+          <div class="text-white font-display font-bold text-sm group-hover:text-purple-200 transition-colors">Our services</div>
+        </a>
+        <a href="/pricing" class="group p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 transition-all">
+          <div class="text-purple-300 text-xs font-semibold uppercase tracking-wider mb-2">Plan ahead</div>
+          <div class="text-white font-display font-bold text-sm group-hover:text-purple-200 transition-colors">See pricing</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

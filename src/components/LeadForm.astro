@@ -1,0 +1,125 @@
+---
+interface Props {
+  formName: string;
+  prefillService?: string;
+  tierContext?: string;
+  submitLabel?: string;
+  successAction?: string;
+  compact?: boolean;
+}
+
+const {
+  formName,
+  prefillService,
+  tierContext,
+  submitLabel = 'Send message',
+  successAction = '/thank-you',
+  compact = false,
+} = Astro.props;
+
+const services = ['SEO', 'Paid Search', 'Web Design', 'Multiple', 'Not sure'];
+const budgets = [
+  'Under $2K / month',
+  '$2K – $5K / month',
+  '$5K – $10K / month',
+  '$10K+ / month',
+  'Project (one-time)',
+  'Not sure yet',
+];
+
+const labelClass = 'block text-sm font-medium text-white/80 mb-2';
+const underlineInput =
+  'w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors';
+const selectInput =
+  'w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-white outline-none focus:border-purple-400 transition-colors appearance-none cursor-pointer';
+const textareaInput =
+  'w-full px-4 py-3 bg-black/30 border border-white/10 focus:border-purple-400 focus:ring-0 rounded-xl text-white placeholder-white/30 outline-none transition-colors resize-none';
+---
+
+<form
+  name={formName}
+  method="POST"
+  action={successAction}
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  data-lead-form
+  class="space-y-6"
+>
+  <input type="hidden" name="form-name" value={formName} />
+  {tierContext && <input type="hidden" name="tier-context" value={tierContext} />}
+  <p class="hidden">
+    <label>Don't fill this out: <input name="bot-field" /></label>
+  </p>
+
+  <div class="grid sm:grid-cols-2 gap-6">
+    <div>
+      <label for={`${formName}-name`} class={labelClass}>Name <span class="text-purple-400">*</span></label>
+      <input id={`${formName}-name`} type="text" name="name" required autocomplete="name" class={underlineInput} placeholder="Your name" />
+    </div>
+    <div>
+      <label for={`${formName}-email`} class={labelClass}>Email <span class="text-purple-400">*</span></label>
+      <input id={`${formName}-email`} type="email" name="email" required autocomplete="email" class={underlineInput} placeholder="you@company.com" />
+    </div>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-6">
+    <div>
+      <label for={`${formName}-business`} class={labelClass}>Business name <span class="text-purple-400">*</span></label>
+      <input id={`${formName}-business`} type="text" name="business" required autocomplete="organization" class={underlineInput} placeholder="Acme Inc." />
+    </div>
+    <div>
+      <label for={`${formName}-phone`} class={labelClass}>Phone</label>
+      <input id={`${formName}-phone`} type="tel" name="phone" autocomplete="tel" class={underlineInput} placeholder="(555) 555-5555" />
+    </div>
+  </div>
+
+  <div>
+    <label for={`${formName}-website`} class={labelClass}>Website</label>
+    <input id={`${formName}-website`} type="url" name="website" autocomplete="url" class={underlineInput} placeholder="https://yourbusiness.com" />
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for={`${formName}-service`} class={labelClass}>Service of interest <span class="text-purple-400">*</span></label>
+      <div class="relative">
+        <select id={`${formName}-service`} name="service" required data-service-select class={selectInput}>
+          <option value="" disabled selected={!prefillService}>Choose one…</option>
+          {services.map((s) => (
+            <option value={s} selected={prefillService === s}>{s}</option>
+          ))}
+        </select>
+        <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" viewBox="0 0 20 20" fill="currentColor"><path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>
+      </div>
+    </div>
+    <div>
+      <label for={`${formName}-budget`} class={labelClass}>Estimated budget</label>
+      <div class="relative">
+        <select id={`${formName}-budget`} name="budget" class={selectInput}>
+          <option value="">Choose one…</option>
+          {budgets.map((b) => <option value={b}>{b}</option>)}
+        </select>
+        <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" viewBox="0 0 20 20" fill="currentColor"><path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for={`${formName}-message`} class={labelClass}>Tell us about your goals</label>
+    <textarea
+      id={`${formName}-message`}
+      name="message"
+      rows={compact ? 3 : 5}
+      class={textareaInput}
+      placeholder="A few sentences about your business and what you're trying to accomplish."
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-brand text-white font-semibold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+    data-submit-btn
+  >
+    <span data-submit-label>{submitLabel}</span>
+    <svg class="w-4 h-4 ml-2" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</form>

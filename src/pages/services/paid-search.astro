@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 import PricingTiers from '../../components/PricingTiers.astro';
+import ConsultModal from '../../components/ConsultModal.astro';
 import { paidSearchTiers } from '../../data/pricing';
 
 const pillars = [
@@ -149,7 +150,7 @@ const process = [
           Management fees only — you pay Google directly for ad spend. <a href="/pricing#paid-search" class="text-purple-300 hover:text-purple-200 font-medium">See full pricing details</a>.
         </p>
       </div>
-      <PricingTiers tiers={paidSearchTiers} />
+      <PricingTiers tiers={paidSearchTiers} service="Paid Search" />
     </div>
   </section>
 
@@ -177,4 +178,6 @@ const process = [
       </div>
     </div>
   </section>
+
+  <ConsultModal />
 </Layout>

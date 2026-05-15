@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PricingTiers from '../components/PricingTiers.astro';
+import ConsultModal from '../components/ConsultModal.astro';
 import { services } from '../data/pricing';
 
 const faqs = [
@@ -60,7 +61,7 @@ const faqs = [
             {service.label}
           </h2>
         </div>
-        <PricingTiers tiers={service.tiers} />
+        <PricingTiers tiers={service.tiers} service={service.label as 'SEO' | 'Paid Search' | 'Web Design'} />
       </div>
     </section>
   ))}
@@ -89,4 +90,6 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <ConsultModal />
 </Layout>

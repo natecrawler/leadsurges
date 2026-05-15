@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LeadForm from '../components/LeadForm.astro';
 ---
 
 <Layout title="Contact Us" description="Get in touch with Lead Surges. Free SEO consultations, no commitment. Based in Apple Valley, CA — serving clients nationwide.">
@@ -25,68 +26,7 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="font-display font-bold text-2xl text-white mb-2">Book a consultation</h2>
           <p class="text-white/60 mb-8">We'll respond within one business day.</p>
 
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
-            <input type="hidden" name="form-name" value="contact" />
-            <p class="hidden">
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
-
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-white/80 mb-2">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  class="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  class="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors"
-                  placeholder="you@company.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="subject" class="block text-sm font-medium text-white/80 mb-2">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                class="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors"
-                placeholder="What can we help with?"
-              />
-            </div>
-
-            <div>
-              <label for="message" class="block text-sm font-medium text-white/80 mb-2">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                class="w-full px-4 py-3 bg-black/30 border border-white/10 focus:border-purple-400 focus:ring-0 rounded-xl text-white placeholder-white/30 outline-none transition-colors resize-none"
-                placeholder="Tell us a bit about your business and what you're trying to accomplish."
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-brand text-white font-semibold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5"
-            >
-              Send message
-              <svg class="w-4 h-4 ml-2" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </form>
+          <LeadForm formName="contact" submitLabel="Send message" successAction="/thank-you" />
         </div>
 
         <aside class="lg:col-span-2 space-y-6">
