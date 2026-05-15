@@ -5,6 +5,44 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# 301 redirects for the URL restructure: location pages moved from
+# /services/[city] to /service-areas/[city]
+[[redirects]]
+  from = "/services/apple-valley"
+  to = "/service-areas/apple-valley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/victorville"
+  to = "/service-areas/victorville"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/hesperia"
+  to = "/service-areas/hesperia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/barstow"
+  to = "/service-areas/barstow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/lucerne-valley"
+  to = "/service-areas/lucerne-valley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/adelanto"
+  to = "/service-areas/adelanto"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

@@ -9,7 +9,7 @@ export function getStaticPaths() {
 
 const loc = Astro.props as Location;
 const nearby = locations.filter((l) => l.slug !== loc.slug);
-const canonical = new URL(`/services/${loc.slug}`, Astro.site).toString();
+const canonical = new URL(`/service-areas/${loc.slug}`, Astro.site).toString();
 
 const serviceBlocks = [
   {
@@ -241,7 +241,7 @@ const serviceSchema = {
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {nearby.map((n) => (
           <a
-            href={`/services/${n.slug}`}
+            href={`/service-areas/${n.slug}`}
             class="group flex items-center justify-between p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 hover:bg-[#150d22]/80 transition-all"
           >
             <span class="font-display font-semibold text-white">Digital Marketing in {n.label}</span>

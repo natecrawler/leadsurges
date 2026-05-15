@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
-import { locations } from '../data/locations';
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import { locations } from '../../data/locations';
 
 const hubFaqs = [
   {
@@ -90,7 +90,7 @@ const breadcrumbSchema = {
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {locations.map((loc, i) => (
           <a
-            href={`/services/${loc.slug}`}
+            href={`/service-areas/${loc.slug}`}
             class:list={[
               'group relative p-7 rounded-2xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 hover:bg-[#150d22]/80 transition-all flex flex-col reveal',
               `reveal-delay-${(i % 4) + 1}`,
