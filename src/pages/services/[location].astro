@@ -11,6 +11,30 @@ const loc = Astro.props as Location;
 const nearby = locations.filter((l) => l.slug !== loc.slug);
 const canonical = new URL(`/services/${loc.slug}`, Astro.site).toString();
 
+const serviceBlocks = [
+  {
+    title: 'SEO',
+    href: '/services/seo',
+    icon: 'cube' as const,
+    desc: loc.services.seo,
+    features: ['Local SEO', 'Technical SEO', 'On-page optimization', 'Link building'],
+  },
+  {
+    title: 'Paid Search',
+    href: '/services/paid-search',
+    icon: 'graph' as const,
+    desc: loc.services.paidSearch,
+    features: ['Google Ads management', 'Conversion tracking', 'Ad copy + creative', 'Daily optimization'],
+  },
+  {
+    title: 'Web Design',
+    href: '/services/web-design',
+    icon: 'pencil' as const,
+    desc: loc.services.webDesign,
+    features: ['Conversion-first design', 'Mobile-first', 'Built for speed', 'SEO-friendly foundation'],
+  },
+];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -27,24 +51,24 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://leadsurges.com/' },
     { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://leadsurges.com/service-areas' },
-    { '@type': 'ListItem', position: 3, name: `SEO in ${loc.label}`, item: canonical },
+    { '@type': 'ListItem', position: 3, name: `Digital Marketing in ${loc.label}`, item: canonical },
   ],
 };
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: `SEO Services in ${loc.label}, CA`,
+  name: `Digital Marketing Services in ${loc.label}, CA`,
   provider: { '@type': 'LocalBusiness', name: 'Lead Surges', telephone: '+1-760-523-9428' },
   areaServed: { '@type': 'City', name: loc.label, containedInPlace: { '@type': 'State', name: 'California' } },
-  serviceType: 'Search Engine Optimization',
-  description: `Local SEO services for businesses in ${loc.label}, California — including Google Business Profile optimization, local citation building, and location-specific content.`,
+  serviceType: ['Search Engine Optimization', 'Paid Search', 'Web Design'],
+  description: `SEO, Google Ads, and web design for businesses in ${loc.label}, California.`,
 };
 ---
 
 <Layout
-  title={`SEO Services in ${loc.label}, CA`}
-  description={`Local SEO services for businesses in ${loc.label}, California. Get found in Google search and Maps where your customers are looking.`}
+  title={`Digital Marketing Services in ${loc.label}, CA`}
+  description={`SEO, paid search (Google Ads), and web design services for businesses in ${loc.label}, California. Get found, get clicks, and convert them into customers.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
@@ -61,18 +85,18 @@ const serviceSchema = {
           <li aria-hidden="true">·</li>
           <li><a href="/service-areas" class="hover:text-white">Service Areas</a></li>
           <li aria-hidden="true">·</li>
-          <li class="text-white/80">SEO in {loc.label}</li>
+          <li class="text-white/80">{loc.label}</li>
         </ol>
       </nav>
 
-      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Local SEO</p>
+      <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-5">Digital Marketing Services</p>
       <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] max-w-4xl">
-        SEO Services in <span class="text-gradient">{loc.label}, CA</span>
+        Digital Marketing Services in <span class="text-gradient">{loc.label}, CA</span>
       </h1>
       <p class="mt-7 text-lg text-white/70 max-w-3xl leading-relaxed">{loc.intro}</p>
       <div class="mt-10 flex flex-wrap gap-4">
         <Button href="/contact" size="lg">Get a free audit</Button>
-        <Button href="/pricing#seo" variant="secondary" size="lg">See pricing</Button>
+        <Button href="/pricing" variant="secondary" size="lg">See pricing</Button>
       </div>
 
       <div class="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/55">
@@ -94,28 +118,52 @@ const serviceSchema = {
 
   <section class="relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
-      <div class="grid lg:grid-cols-2 gap-16 reveal">
-        <div>
-          <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Local market</p>
-          <h2 class="font-display font-bold text-3xl lg:text-4xl text-white mb-6 leading-tight">
-            What SEO looks like in <span class="text-gradient">{loc.label}.</span>
-          </h2>
-          <p class="text-white/70 leading-relaxed">{loc.marketContext}</p>
-        </div>
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Our Services</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          Three services that work better <span class="text-gradient">together.</span>
+        </h2>
+        <p class="mt-5 text-white/65 leading-relaxed">
+          Each channel matters on its own. Combined, they compound. Here's how we run each service for {loc.label} businesses.
+        </p>
+      </div>
 
-        <div class="space-y-4">
-          {[
-            { t: 'Google Business Profile optimization', b: 'Show up in the local pack and Google Maps with a fully optimized profile.' },
-            { t: 'Local citation building', b: 'Consistent business listings across directories search engines trust.' },
-            { t: 'Location-specific content', b: 'Pages that signal you serve real customers in real places.' },
-            { t: 'Review strategy', b: 'A system to earn and respond to the reviews that build trust and rankings.' },
-          ].map(({ t, b }) => (
-            <div class="p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10">
-              <h3 class="font-display font-bold text-white mb-2">{t}</h3>
-              <p class="text-white/65 text-sm leading-relaxed">{b}</p>
+      <div class="grid lg:grid-cols-3 gap-6">
+        {serviceBlocks.map((s, i) => (
+          <div class:list={['relative p-8 rounded-2xl bg-[#0f0a18]/60 border border-white/10 flex flex-col reveal', `reveal-delay-${i + 1}`]}>
+            <div class="w-14 h-14 mb-6 flex items-center justify-center rounded-xl bg-purple-500/10 border border-purple-400/30 text-purple-300">
+              {s.icon === 'cube' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 7.5 12 2 3 7.5m18 0L12 13M21 7.5v9L12 22m-9-14.5L12 13m-9-5.5v9L12 22m0-9v9" stroke-linejoin="round" stroke-linecap="round"/></svg>}
+              {s.icon === 'graph' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17L9 11L13 15L21 7M21 7H15M21 7V13" stroke-linejoin="round" stroke-linecap="round"/></svg>}
+              {s.icon === 'pencil' && <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke-linejoin="round" stroke-linecap="round"/></svg>}
             </div>
-          ))}
-        </div>
+            <h3 class="text-2xl font-display font-bold text-white mb-3">{s.title}</h3>
+            <p class="text-white/65 leading-relaxed mb-5 flex-1">{s.desc}</p>
+            <ul class="space-y-2 mb-6">
+              {s.features.map((f) => (
+                <li class="text-white/75 text-sm flex items-start gap-2">
+                  <svg class="w-4 h-4 mt-0.5 text-purple-400 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.3 7.3a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 1 1 1.4-1.4L8.7 12l6.6-6.6a1 1 0 0 1 1.4 0z"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href={s.href} class="inline-flex items-center gap-1 text-purple-300 hover:text-purple-200 text-sm font-semibold">
+              Learn more about {s.title}
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 border-t border-white/5">
+      <div class="max-w-3xl reveal">
+        <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">Local market</p>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl text-white mb-6 leading-tight">
+          What digital marketing looks like in <span class="text-gradient">{loc.label}.</span>
+        </h2>
+        <p class="text-white/70 leading-relaxed text-lg">{loc.marketContext}</p>
       </div>
     </div>
   </section>
@@ -165,7 +213,7 @@ const serviceSchema = {
       <div class="text-center mb-12 reveal">
         <p class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4">FAQ</p>
         <h2 class="font-display font-bold text-3xl sm:text-4xl text-white leading-tight">
-          Common {loc.label} SEO questions.
+          Common {loc.label} digital marketing questions.
         </h2>
       </div>
       <div class="space-y-3">
@@ -196,7 +244,7 @@ const serviceSchema = {
             href={`/services/${n.slug}`}
             class="group flex items-center justify-between p-5 rounded-xl bg-[#0f0a18]/60 border border-white/10 hover:border-purple-400/40 hover:bg-[#150d22]/80 transition-all"
           >
-            <span class="font-display font-semibold text-white">SEO in {n.label}</span>
+            <span class="font-display font-semibold text-white">Digital Marketing in {n.label}</span>
             <svg class="w-5 h-5 text-purple-300 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path d="M7.05 4.55a1 1 0 0 1 1.4 0l4.5 4.5a1 1 0 0 1 0 1.4l-4.5 4.5a1 1 0 0 1-1.4-1.4L10.59 10 7.05 6.46a1 1 0 0 1 0-1.4z"/></svg>
           </a>
         ))}
@@ -217,10 +265,10 @@ const serviceSchema = {
           </div>
           <div class="relative max-w-2xl">
             <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-              Ready to be found in <span class="text-gradient">{loc.label}?</span>
+              Ready to grow in <span class="text-gradient">{loc.label}?</span>
             </h2>
             <p class="mt-5 text-white/70 leading-relaxed text-lg">
-              Free SEO audit, no commitment. We'll show you exactly what's working and what isn't.
+              Free audit, no commitment. We'll show you exactly where the opportunity is and what it'll take to capture it.
             </p>
             <div class="mt-8 flex flex-wrap gap-4">
               <Button href="/contact" size="lg">Get my free audit</Button>
