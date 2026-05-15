@@ -146,10 +146,13 @@ import LeadForm from './LeadForm.astro';
         subEl!.textContent = defaultSub;
       }
 
-      // Pre-select service
+      // Pre-select service (dispatch change so the custom dropdown UI re-syncs)
       if (opts.service && serviceSelect) {
         const match = Array.from(serviceSelect.options).find((o) => o.value === opts.service);
-        if (match) serviceSelect.value = match.value;
+        if (match) {
+          serviceSelect.value = match.value;
+          serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }
       }
 
       // Set or update hidden tier-context field

@@ -30,8 +30,6 @@ const budgets = [
 const labelClass = 'block text-sm font-medium text-white/80 mb-2';
 const underlineInput =
   'w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 focus:border-purple-400 focus:ring-0 text-white placeholder-white/30 outline-none transition-colors';
-const selectInput =
-  'w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-white outline-none focus:border-purple-400 transition-colors appearance-none cursor-pointer';
 const textareaInput =
   'w-full px-4 py-3 bg-black/30 border border-white/10 focus:border-purple-400 focus:ring-0 rounded-xl text-white placeholder-white/30 outline-none transition-colors resize-none';
 ---
@@ -80,25 +78,61 @@ const textareaInput =
 
   <div class="grid sm:grid-cols-2 gap-4">
     <div>
-      <label for={`${formName}-service`} class={labelClass}>Service of interest <span class="text-purple-400">*</span></label>
-      <div class="relative">
-        <select id={`${formName}-service`} name="service" required data-service-select class={selectInput}>
+      <label id={`${formName}-service-label`} class={labelClass}>
+        Service of interest <span class="text-purple-400">*</span>
+      </label>
+      <div class="custom-select" data-custom-select>
+        <select
+          name="service"
+          required
+          data-service-select
+          aria-labelledby={`${formName}-service-label`}
+          tabindex="-1"
+        >
           <option value="" disabled selected={!prefillService}>Choose one…</option>
           {services.map((s) => (
             <option value={s} selected={prefillService === s}>{s}</option>
           ))}
         </select>
-        <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" viewBox="0 0 20 20" fill="currentColor"><path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>
+        <button type="button" class="custom-select-trigger" data-select-trigger aria-haspopup="listbox" aria-expanded="false" aria-labelledby={`${formName}-service-label`}>
+          <span class="custom-select-label" data-select-label>{prefillService || 'Choose one…'}</span>
+          <svg class="custom-select-chevron" viewBox="0 0 20 20" fill="currentColor"><path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>
+        </button>
+        <ul class="custom-select-panel" data-select-panel role="listbox" hidden>
+          {services.map((s) => (
+            <li
+              role="option"
+              data-value={s}
+              class="custom-select-option"
+              aria-selected={prefillService === s}
+            >
+              <span>{s}</span>
+              <svg class="custom-select-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.3 7.3a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 1 1 1.4-1.4L8.7 12l6.6-6.6a1 1 0 0 1 1.4 0z"/></svg>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
+
     <div>
-      <label for={`${formName}-budget`} class={labelClass}>Estimated budget</label>
-      <div class="relative">
-        <select id={`${formName}-budget`} name="budget" class={selectInput}>
-          <option value="">Choose one…</option>
+      <label id={`${formName}-budget-label`} class={labelClass}>Estimated budget</label>
+      <div class="custom-select" data-custom-select>
+        <select name="budget" aria-labelledby={`${formName}-budget-label`} tabindex="-1">
+          <option value="" selected>Choose one…</option>
           {budgets.map((b) => <option value={b}>{b}</option>)}
         </select>
-        <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" viewBox="0 0 20 20" fill="currentColor"><path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>
+        <button type="button" class="custom-select-trigger" data-select-trigger aria-haspopup="listbox" aria-expanded="false" aria-labelledby={`${formName}-budget-label`}>
+          <span class="custom-select-label" data-select-label>Choose one…</span>
+          <svg class="custom-select-chevron" viewBox="0 0 20 20" fill="currentColor"><path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>
+        </button>
+        <ul class="custom-select-panel" data-select-panel role="listbox" hidden>
+          {budgets.map((b) => (
+            <li role="option" data-value={b} class="custom-select-option" aria-selected="false">
+              <span>{b}</span>
+              <svg class="custom-select-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.3 7.3a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 1 1 1.4-1.4L8.7 12l6.6-6.6a1 1 0 0 1 1.4 0z"/></svg>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </div>
@@ -123,3 +157,242 @@ const textareaInput =
     <svg class="w-4 h-4 ml-2" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 </form>
+
+<style>
+  .custom-select {
+    position: relative;
+  }
+  .custom-select > select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .custom-select-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    transition: border-color 200ms, background 200ms, color 200ms;
+  }
+  .custom-select-trigger:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .custom-select-trigger:focus-visible {
+    outline: none;
+    border-color: rgba(192, 132, 252, 0.6);
+    box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.15);
+  }
+  .custom-select[data-open="true"] .custom-select-trigger {
+    border-color: rgba(192, 132, 252, 0.6);
+  }
+  .custom-select-trigger[data-has-value="true"] .custom-select-label {
+    color: white;
+  }
+  .custom-select-chevron {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    color: rgba(192, 132, 252, 0.7);
+    transition: transform 200ms;
+  }
+  .custom-select[data-open="true"] .custom-select-chevron {
+    transform: rotate(180deg);
+  }
+  .custom-select-panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: #120a1c;
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    border-radius: 0.75rem;
+    padding: 0.375rem;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    max-height: 16rem;
+    overflow-y: auto;
+    animation: select-in 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes select-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .custom-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-size: 0.9375rem;
+    transition: background 150ms, color 150ms;
+  }
+  .custom-select-option:hover,
+  .custom-select-option[data-focused="true"] {
+    background: rgba(192, 132, 252, 0.12);
+    color: white;
+  }
+  .custom-select-option[aria-selected="true"] {
+    color: white;
+    background: rgba(192, 132, 252, 0.18);
+  }
+  .custom-select-check {
+    width: 1rem;
+    height: 1rem;
+    color: rgb(192, 132, 252);
+    opacity: 0;
+    flex-shrink: 0;
+  }
+  .custom-select-option[aria-selected="true"] .custom-select-check {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-custom-select]').forEach((root) => {
+    const select = root.querySelector('select') as HTMLSelectElement;
+    const trigger = root.querySelector<HTMLButtonElement>('[data-select-trigger]')!;
+    const labelEl = root.querySelector<HTMLElement>('[data-select-label]')!;
+    const panel = root.querySelector<HTMLUListElement>('[data-select-panel]')!;
+    const options = Array.from(root.querySelectorAll<HTMLLIElement>('.custom-select-option'));
+
+    const close = () => {
+      root.removeAttribute('data-open');
+      panel.setAttribute('hidden', '');
+      trigger.setAttribute('aria-expanded', 'false');
+      options.forEach((o) => o.removeAttribute('data-focused'));
+    };
+    const open = () => {
+      // Close all other open selects first
+      document.querySelectorAll('[data-custom-select][data-open="true"]').forEach((el) => {
+        if (el !== root) {
+          el.removeAttribute('data-open');
+          el.querySelector('[data-select-panel]')?.setAttribute('hidden', '');
+          el.querySelector('[data-select-trigger]')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      root.setAttribute('data-open', 'true');
+      panel.removeAttribute('hidden');
+      trigger.setAttribute('aria-expanded', 'true');
+      const selectedOption = options.find((o) => o.getAttribute('aria-selected') === 'true');
+      (selectedOption || options[0])?.setAttribute('data-focused', 'true');
+    };
+
+    const setValue = (value: string) => {
+      select.value = value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      const optionText = options.find((o) => o.dataset.value === value)?.querySelector('span')?.textContent || value;
+      labelEl.textContent = optionText;
+      trigger.setAttribute('data-has-value', value ? 'true' : 'false');
+      options.forEach((o) => o.setAttribute('aria-selected', o.dataset.value === value ? 'true' : 'false'));
+    };
+
+    // Initialize: reflect <select>'s initial value (handles prefill)
+    if (select.value) {
+      const initialText = options.find((o) => o.dataset.value === select.value)?.querySelector('span')?.textContent;
+      if (initialText) {
+        labelEl.textContent = initialText;
+        trigger.setAttribute('data-has-value', 'true');
+      }
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (root.getAttribute('data-open') === 'true') close();
+      else open();
+    });
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        setValue(option.dataset.value || '');
+        close();
+        trigger.focus();
+      });
+      option.addEventListener('mouseenter', () => {
+        options.forEach((o) => o.removeAttribute('data-focused'));
+        option.setAttribute('data-focused', 'true');
+      });
+    });
+
+    // Keyboard navigation
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (root.getAttribute('data-open') !== 'true') open();
+      }
+    });
+    root.addEventListener('keydown', (e) => {
+      if (root.getAttribute('data-open') !== 'true') return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        close();
+        trigger.focus();
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const currentIdx = options.findIndex((o) => o.getAttribute('data-focused') === 'true');
+        const nextIdx =
+          e.key === 'ArrowDown'
+            ? Math.min(options.length - 1, currentIdx + 1)
+            : Math.max(0, currentIdx - 1);
+        options.forEach((o) => o.removeAttribute('data-focused'));
+        options[nextIdx]?.setAttribute('data-focused', 'true');
+        options[nextIdx]?.scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const focused = options.find((o) => o.getAttribute('data-focused') === 'true');
+        if (focused) {
+          setValue(focused.dataset.value || '');
+          close();
+          trigger.focus();
+        }
+      }
+    });
+
+    // Re-sync when external code changes the select value (e.g., modal prefill)
+    const observer = new MutationObserver(() => {
+      if (select.value) {
+        const initialText = options.find((o) => o.dataset.value === select.value)?.querySelector('span')?.textContent;
+        if (initialText) {
+          labelEl.textContent = initialText;
+          trigger.setAttribute('data-has-value', 'true');
+          options.forEach((o) => o.setAttribute('aria-selected', o.dataset.value === select.value ? 'true' : 'false'));
+        }
+      }
+    });
+    observer.observe(select, { attributes: true, attributeFilter: ['value'] });
+    select.addEventListener('change', () => {
+      const v = select.value;
+      const txt = options.find((o) => o.dataset.value === v)?.querySelector('span')?.textContent;
+      if (txt) {
+        labelEl.textContent = txt;
+        trigger.setAttribute('data-has-value', v ? 'true' : 'false');
+        options.forEach((o) => o.setAttribute('aria-selected', o.dataset.value === v ? 'true' : 'false'));
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('[data-custom-select][data-open="true"]').forEach((el) => {
+      el.removeAttribute('data-open');
+      el.querySelector('[data-select-panel]')?.setAttribute('hidden', '');
+      el.querySelector('[data-select-trigger]')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
