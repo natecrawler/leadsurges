@@ -5,8 +5,60 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# 301 redirects for the URL restructure: location pages moved from
-# /services/[city] to /service-areas/[city]
+# ====================================================================
+# Legacy URL redirects (from the old Duda site)
+# These URLs had real Google impressions before the rebuild — keep them
+# pointing somewhere useful so we don't lose ranking signals.
+# ====================================================================
+
+[[redirects]]
+  from = "/digital-marketing-in-apple-valley"
+  to = "/service-areas/apple-valley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digital-marketing-in-victorville"
+  to = "/service-areas/victorville"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digital-marketing-in-hesperia"
+  to = "/service-areas/hesperia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digital-marketing-in-barstow"
+  to = "/service-areas/barstow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digital-marketing-in-lucerne-valley"
+  to = "/service-areas/lucerne-valley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digital-marketing-in-adelanto"
+  to = "/service-areas/adelanto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about"
+  status = 301
+  force = true
+
+# ====================================================================
+# Internal URL restructure: location pages moved from /services to /service-areas
+# (These are for the brief window where the new site used /services/[city];
+# kept in case any external link picked them up.)
+# ====================================================================
+
 [[redirects]]
   from = "/services/apple-valley"
   to = "/service-areas/apple-valley"
