@@ -157,6 +157,63 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toStri
       } else {
         counters.forEach((el) => animateCounter(el));
       }
+
+      // ──────────────────────────────────────────────────────────────
+      // GA4 conversion event tracking
+      // Fires events for: form_start, generate_lead, click_to_call
+      // ──────────────────────────────────────────────────────────────
+      type GtagFn = (event: string, name: string, params?: Record<string, unknown>) => void;
+      const gtagTrack: GtagFn = (...args) => {
+        if (typeof (window as any).gtag === 'function') (window as any).gtag(...args);
+      };
+
+      // form_start — first time a user interacts with any lead form (focuses any field)
+      const startedForms = new WeakSet<HTMLFormElement>();
+      document.addEventListener('focusin', (e) => {
+        const target = e.target as HTMLElement;
+        const form = target.closest('form[data-lead-form]') as HTMLFormElement | null;
+        if (!form || startedForms.has(form)) return;
+        startedForms.add(form);
+        gtagTrack('event', 'form_start', {
+          form_name: form.getAttribute('name') || 'unknown',
+          form_location: location.pathname,
+        });
+      });
+
+      // generate_lead — fired on form submit (capture phase so it runs before AJAX preventDefault)
+      document.addEventListener(
+        'submit',
+        (e) => {
+          const form = (e.target as HTMLElement).closest('form[data-lead-form]') as HTMLFormElement | null;
+          if (!form) return;
+          const data = new FormData(form);
+          const service = data.get('service');
+          const tierContext = data.get('tier-context');
+          const budget = data.get('budget');
+          gtagTrack('event', 'generate_lead', {
+            form_name: form.getAttribute('name') || 'unknown',
+            form_location: location.pathname,
+            service: typeof service === 'string' && service ? service : undefined,
+            tier_context: typeof tierContext === 'string' && tierContext ? tierContext : undefined,
+            budget: typeof budget === 'string' && budget ? budget : undefined,
+            // GA4 recommended "currency" + "value" can be set if you assign a lead value:
+            // currency: 'USD',
+            // value: 50,
+          });
+        },
+        true
+      );
+
+      // click_to_call — any tel: link click anywhere on the site
+      document.addEventListener('click', (e) => {
+        const link = (e.target as HTMLElement).closest('a[href^="tel:"]') as HTMLAnchorElement | null;
+        if (!link) return;
+        gtagTrack('event', 'click_to_call', {
+          phone_number: link.getAttribute('href')?.replace('tel:', '') || '',
+          link_location: location.pathname,
+          link_text: link.textContent?.trim().slice(0, 40) || '',
+        });
+      });
     </script>
   </body>
 </html>
