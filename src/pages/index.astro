@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import { googleReviews } from '../data/reviews';
 
 const services = [
   {
@@ -63,6 +64,23 @@ const locations = [
             <Button href="/contact" variant="secondary" size="lg">Contact Us</Button>
           </div>
 
+          <a
+            href={googleReviews.url}
+            target="_blank"
+            rel="noopener"
+            class="mt-8 inline-flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors group"
+          >
+            <span class="flex items-center gap-0.5 text-amber-400" aria-hidden="true">
+              {[0, 1, 2, 3, 4].map(() => (
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
+              ))}
+            </span>
+            <span>
+              <strong class="text-white font-semibold">{googleReviews.rating.toFixed(1)}</strong>
+              from {googleReviews.count} Google reviews
+            </span>
+          </a>
+
           <div class="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-white/50">
             <div class="flex items-center gap-2">
               <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
@@ -98,8 +116,8 @@ const locations = [
             </div>
             <div class="absolute -bottom-4 -right-4 px-4 py-3 rounded-2xl bg-[#0f0a18] border border-white/10 shadow-xl">
               <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-purple-300" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
-                <span class="text-xs text-white/70 font-medium">Trusted by High Desert brands</span>
+                <svg class="w-4 h-4 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.9 6 6.6 1-4.8 4.6 1.1 6.6L10 16l-5.9 3.2L5.2 12.6.4 8l6.6-1L10 1z"/></svg>
+                <span class="text-xs text-white/70 font-medium">{googleReviews.rating.toFixed(1)} from {googleReviews.count} Google reviews</span>
               </div>
             </div>
           </div>

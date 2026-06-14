@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { googleReviews } from '../data/reviews';
 import '../styles/global.css';
 
 interface Props {
@@ -74,7 +75,14 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toStri
         "addressCountry": "US"
       },
       "areaServed": ["Apple Valley", "Victorville", "Hesperia", "Barstow", "Lucerne Valley", "Adelanto"],
-      "priceRange": "$$"
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": googleReviews.rating.toFixed(1),
+        "reviewCount": String(googleReviews.count),
+        "bestRating": "5",
+        "worstRating": "1"
+      }
     })} />
 
     <!-- Google Analytics 4 -->
