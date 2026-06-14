@@ -20,6 +20,21 @@ const readingMinutes = Math.max(1, Math.round(post.body!.split(/\s+/).length / 2
 
 const allPosts = (await getCollection('blog')).filter((p) => p.id !== post.id);
 const related = allPosts.slice(0, 2);
+
+// Author bios power the E-E-A-T byline block and Person schema below.
+const authorBios: Record<string, { role: string; bio: string }> = {
+  'Nathan Ayala': {
+    role: 'Founder, Lead Surges',
+    bio: 'Nathan Ayala is the founder of Lead Surges, a digital marketing agency in Apple Valley, CA. He works hands-on with High Desert businesses on local SEO, Google Ads, and conversion-focused web design — and writes from what actually moves leads and revenue for local service businesses, not theory.',
+  },
+};
+const author = authorBios[post.data.author] ?? null;
+const authorInitials = post.data.author
+  .split(' ')
+  .map((part) => part[0])
+  .join('')
+  .slice(0, 2)
+  .toUpperCase();
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
@@ -55,6 +70,21 @@ const related = allPosts.slice(0, 2);
       <div class="prose-blog text-white/80">
         <Content />
       </div>
+
+      {author && (
+        <div class="mt-14 pt-8 border-t border-white/10">
+          <div class="flex items-start gap-4 p-6 rounded-2xl bg-[#0f0a18]/60 border border-white/10">
+            <div class="w-14 h-14 shrink-0 rounded-full bg-gradient-to-br from-purple-600 to-fuchsia-600 flex items-center justify-center font-display font-bold text-white text-lg">
+              {authorInitials}
+            </div>
+            <div>
+              <p class="font-display font-bold text-white">{post.data.author}</p>
+              <p class="text-purple-300 text-sm font-medium mb-2">{author.role}</p>
+              <p class="text-white/65 text-sm leading-relaxed">{author.bio}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
 
     {related.length > 0 && (
@@ -76,8 +106,15 @@ const related = allPosts.slice(0, 2);
       "@type": "BlogPosting",
       "headline": post.data.title,
       "description": post.data.description,
-      "author": { "@type": "Person", "name": post.data.author },
+      "author": {
+        "@type": "Person",
+        "name": post.data.author,
+        ...(author ? { "jobTitle": author.role, "description": author.bio } : {}),
+        "worksFor": { "@type": "Organization", "name": "Lead Surges" },
+        "url": "https://leadsurges.com/about"
+      },
       "datePublished": post.data.pubDate.toISOString(),
+      "dateModified": (post.data.updatedDate ?? post.data.pubDate).toISOString(),
       "publisher": {
         "@type": "Organization",
         "name": "Lead Surges",

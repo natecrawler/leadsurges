@@ -8,6 +8,7 @@ const blog = defineCollection({
     description: z.string(),
     author: z.string().default('Nathan Ayala'),
     pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     category: z.string().optional(),
   }),
 });
