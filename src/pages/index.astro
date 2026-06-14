@@ -4,6 +4,11 @@ import Button from '../components/Button.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { googleReviews } from '../data/reviews';
+import { testimonialsReady } from '../data/testimonials';
+
+// Show placeholder testimonials in local dev only; hide on the live build
+// until real content is in and `testimonialsReady` is flipped to true.
+const showTestimonials = testimonialsReady || import.meta.env.DEV;
 
 const services = [
   {
@@ -286,7 +291,7 @@ const locations = [
     </div>
   </section>
 
-  <Testimonials />
+  {showTestimonials && <Testimonials />}
 
   <section class="relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">

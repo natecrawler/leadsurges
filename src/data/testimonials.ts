@@ -11,6 +11,11 @@
 // Reviewers most often mention: Google Ads, lead generation, cost-per-click,
 // local SEO — good angles to look for when picking which reviews to feature.
 
+// Flip to `true` once the testimonials below hold real content. While false,
+// the section renders in local `npm run dev` (so you can preview/fill it) but
+// is hidden on the production build — placeholders never reach live visitors.
+export const testimonialsReady = false;
+
 export type Testimonial = {
   quote: string;
   name: string;
