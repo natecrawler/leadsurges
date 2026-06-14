@@ -1,65 +1,85 @@
 // ─────────────────────────────────────────────────────────────────────────
-// CLIENT TESTIMONIALS  —  ⚠️ PLACEHOLDER CONTENT, REPLACE BEFORE DEPLOYING
+// CLIENT TESTIMONIALS  —  real, verbatim Google reviews for Lead Surges
 // ─────────────────────────────────────────────────────────────────────────
-// Every entry below is a placeholder. To activate one:
-//   1. Paste a real Google review into `quote` and set `name` / `business`.
-//   2. Fill `result` with the real headline metric (or set it to undefined).
-//   3. Flip `real` to true.
-// Only entries with `real: true` emit Review structured data (schema.org),
-// so placeholder entries never become fake review markup. The verified
-// aggregate rating (5.0★, 27 reviews) lives separately in ./reviews.ts.
-// Reviewers most often mention: Google Ads, lead generation, cost-per-click,
-// local SEO — good angles to look for when picking which reviews to feature.
+// Every entry below is a genuine 5-star Google review (real: true), so each
+// emits Review structured data. Quotes are kept faithful to the originals;
+// longer reviews are trimmed at a complete sentence (no words added).
+// `result` chips use ONLY figures the reviewer actually stated — do not add
+// invented performance numbers here. The verified aggregate rating
+// (5.0★, 32 reviews) lives separately in ./reviews.ts.
 
-// Flip to `true` once the testimonials below hold real content. While false,
-// the section renders in local `npm run dev` (so you can preview/fill it) but
-// is hidden on the production build — placeholders never reach live visitors.
-export const testimonialsReady = false;
+// Section is live (real content). Set false to hide it (renders in dev only).
+export const testimonialsReady = true;
 
 export type Testimonial = {
   quote: string;
   name: string;
   business: string;
-  /** Optional headline result, e.g. "+140% leads in 6 months". */
+  /** Optional headline result. Use only numbers the reviewer actually stated. */
   result?: string;
-  /** Set true ONLY for a genuine, verifiable review. Gates Review schema. */
+  /** True for genuine, verifiable reviews. Gates Review schema. */
   real: boolean;
 };
 
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'Placeholder — paste a real Google review here. Keep it specific: what changed, how fast, and what it meant for the business.',
-    name: 'First L.',
-    business: 'Business Name, Apple Valley',
-    result: '+XX% leads',
-    real: false,
+      'We were referred to Nathan and his team. We went from a few phone calls a day to over 15 booked appointments a day. Nathan and his team are forever hired.',
+    name: 'Chris Otten',
+    business: 'Local service business',
+    result: '15+ booked appts/day',
+    real: true,
   },
   {
     quote:
-      'Placeholder — a second real client quote goes here. Reviews that mention calls, leads, or revenue convert best.',
-    name: 'First L.',
-    business: 'Business Name, Victorville',
-    result: '+XX calls / mo',
-    real: false,
+      'They are managing our car dealership leads. We have a budget of more than half a million dollars a year.',
+    name: 'Guadalupe Andreu',
+    business: 'Auto dealership',
+    result: '$500K+/yr ad budget',
+    real: true,
   },
   {
     quote:
-      'Placeholder — a third real client quote goes here. A different industry than the others adds credibility.',
-    name: 'First L.',
-    business: 'Business Name, Hesperia',
-    result: '#X ranking',
-    real: false,
+      'Nathan and his team are doing a wonderful job on our Google Adwords. He has our Cost Per Click extremely low.',
+    name: 'Brian Gray',
+    business: 'Google Ads client',
+    result: 'Low cost-per-click',
+    real: true,
+  },
+  {
+    quote:
+      'Our cost for advertising has been reduced and our revenue has increased. Couldn’t ask for a better company to work with.',
+    name: 'Letty G.',
+    business: 'Google Local Guide',
+    result: 'Lower cost, higher revenue',
+    real: true,
+  },
+  {
+    quote:
+      'Results are what we were looking for. We got them with Nathan and we are getting an influx of phone calls and making money.',
+    name: 'Eileen Harang',
+    business: 'Verified Google review',
+    result: 'More inbound calls',
+    real: true,
+  },
+  {
+    quote:
+      'Working with Nathan’s company has been an absolute game-changer for our real estate business in Victorville.',
+    name: 'Jeff Kelsoe',
+    business: 'Real estate · Victorville',
+    real: true,
   },
 ];
 
 /** Genuine reviews only — used to emit Review structured data. */
 export const realTestimonials = testimonials.filter((t) => t.real);
 
-// Headline client results — ⚠️ PLACEHOLDER numbers, replace with real ones.
-// Keep these defensible (averages or specific anonymized client outcomes).
+// Headline stats strip. These are the verified review figures (all true).
+// Want to feature campaign performance instead? Swap in real, defensible
+// numbers once you have them, e.g.:
+//   { value: '+140%', label: 'average organic traffic growth' }
 export const resultStats: { value: string; label: string }[] = [
-  { value: '+XXX%', label: 'average organic traffic growth' },
-  { value: 'XX', label: 'more qualified leads per month' },
-  { value: 'X mo', label: 'typical time to first-page rankings' },
+  { value: '5.0★', label: 'average rating on Google' },
+  { value: '32', label: 'verified 5-star reviews' },
+  { value: '100%', label: 'five-star reviews' },
 ];
